@@ -1,0 +1,18 @@
+# Python
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+
+# PyCharm
+.idea/
+
+# Docker
+Dockerfile
+docker-compose.yml
+
+# Environment Variables
+.env
+
+# Python Virtual Environment
+venv/git add

@@ -9,7 +9,7 @@ __pycache__/
 
 # Docker
 Dockerfile
-docker-compose.yml
+docker-compose.prod.yml
 
 # Environment Variables
 .env

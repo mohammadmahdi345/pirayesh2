@@ -1,0 +1,96 @@
+
+services:
+  db:
+    image: mysql:latest
+    container_name: pirayesh_db_dev_container
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: mehdi1234
+      MYSQL_DATABASE: dev_db  # نام دیتابیس
+      MYSQL_USER: dev_user  # نام کاربری
+      MYSQL_PASSWORD: dev_mmd1234  # پسورد
+    volumes:
+      - dbs_data:/var/lib/mysql
+    ports:
+      - "3310:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${MYSQL_ROOT_PASSWORD}"]
+      interval: 30s
+      retries: 5
+      start_period: 10s
+      timeout: 10s
+
+  web:
+#    container_name: pirayesh_container
+    image: pirayesh
+    build: .
+    restart: always
+    volumes:
+      - .:/app
+      - ./staticfiles:/app/staticfiles
+      - ./media:/app/media
+
+    ports:
+      - "8005:8005" # تغییر پورت به 8005 برای ترافیک داخل کانتینر
+      - "8089:8089"
+#    env_file:
+#      - .env.dev
+    depends_on:
+      - db
+    command: >
+      sh -c "python wait_for_db.py && python manage.py migrate && python manage.py runserver 0.0.0.0:8005"
+    env_file:
+      - .env.dev
+    environment:
+      DEBUG: 1
+      DJANGO_SETTINGS_MODULE: settings.dev
+      DB_NAME: dev_db  # نام دیتابیس
+      DB_USER: dev_user  # نام کاربری
+      DB_PASSWORD: dev_mmd1234  # پسورد
+      DB_HOST: db  # نام سرویس دیتابیس که در docker-compose تعریف کرده‌ایم
+      DB_PORT: 3306  # پورت MySQL
+
+  redis:
+    image: redis:7
+    container_name: redis
+    ports:
+      - "6379:6379"
+
+  celery:
+    build:
+      context: .
+    container_name: celery
+    command: celery -A settings.celery_app worker --loglevel=info
+    volumes:
+      - .:/app
+    depends_on:
+      - redis
+      - web
+    environment:
+      - DJANGO_SETTINGS_MODULE=settings.dev
+      - PYTHONPATH=/app
+
+#  locust:
+#    image: locustio/locust
+#    ports:
+#      - "8089:8089"
+#    volumes:
+#      - .:/mnt/locust  # فرض بر اینه که locustfile.py توی ریشه پروژه‌ته
+#    working_dir: /mnt/locust
+#    command: -f locustfile.py --host http://web:8005
+#    depends_on:
+#      - web
+#
+
+#  nginx:
+#    image: nginx:latest
+#    container_name: pirayesh_nginx
+#    ports:
+#      - "8000:80"  # نکسین به پورت 80 داخل کانتینر گوش می‌ده
+#    volumes:
+#      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+#      - .:/app  # برای دسترسی Nginx به staticfiles و media
+#    depends_on:
+#      - web
+volumes:
+  dbs_data: {}  # تعریف volume

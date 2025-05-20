@@ -1,0 +1,2094 @@
+ERROR 2025-05-09 13:04:52,260 log Internal Server Error: /admin/service/hairstyle/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/mysql/base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+  File "/usr/local/lib/python3.10/site-packages/MySQLdb/cursors.py", line 206, in execute
+    res = self._query(query)
+  File "/usr/local/lib/python3.10/site-packages/MySQLdb/cursors.py", line 319, in _query
+    db.query(q)
+  File "/usr/local/lib/python3.10/site-packages/MySQLdb/connections.py", line 254, in query
+    _mysql.connection.query(self, query)
+MySQLdb._exceptions.ProgrammingError: (1146, "Table 'dev_db.service_hairstyle' doesn't exist")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/admin/options.py", line 688, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/utils/decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/decorators/cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/admin/sites.py", line 242, in inner
+    return view(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/utils/decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/utils/decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/admin/options.py", line 1926, in changelist_view
+    cl = self.get_changelist_instance(request)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/admin/options.py", line 836, in get_changelist_instance
+    return ChangeList(
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/admin/views/main.py", line 123, in __init__
+    self.get_results(request)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/admin/views/main.py", line 279, in get_results
+    result_count = paginator.count
+  File "/usr/local/lib/python3.10/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/lib/python3.10/site-packages/django/core/paginator.py", line 93, in count
+    return c()
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/query.py", line 608, in count
+    return self.query.get_count(using=self.db)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/sql/query.py", line 536, in get_count
+    return obj.get_aggregation(using, {"__count": Count("*")})["__count"]
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/sql/query.py", line 522, in get_aggregation
+    result = compiler.execute_sql(SINGLE)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/sql/compiler.py", line 1560, in execute_sql
+    cursor.execute(sql, params)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/utils.py", line 102, in execute
+    return super().execute(sql, params)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+  File "/usr/local/lib/python3.10/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/mysql/base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+  File "/usr/local/lib/python3.10/site-packages/MySQLdb/cursors.py", line 206, in execute
+    res = self._query(query)
+  File "/usr/local/lib/python3.10/site-packages/MySQLdb/cursors.py", line 319, in _query
+    db.query(q)
+  File "/usr/local/lib/python3.10/site-packages/MySQLdb/connections.py", line 254, in query
+    _mysql.connection.query(self, query)
+django.db.utils.ProgrammingError: (1146, "Table 'dev_db.service_hairstyle' doesn't exist")
+ERROR 2025-05-10 08:41:51,007 log Internal Server Error: /offs/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/app/service/views.py", line 129, in post
+    serializer.is_valid(raise_exception=True)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 223, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 442, in run_validation
+    value = self.to_internal_value(data)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 495, in to_internal_value
+    for field in fields:
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 378, in _writable_fields
+    for field in self.fields.values():
+  File "/usr/local/lib/python3.10/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 372, in fields
+    for key, value in self.get_fields().items():
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1103, in get_fields
+    field_class, field_kwargs = self.build_field(
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1249, in build_field
+    return self.build_unknown_field(field_name, model_class)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1367, in build_unknown_field
+    raise ImproperlyConfigured(
+django.core.exceptions.ImproperlyConfigured: Field name `time` is not valid for model `Appointments` in `service.serializers.OffSerializer`.
+ERROR 2025-05-10 08:42:17,308 log Internal Server Error: /offs/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/app/service/views.py", line 129, in post
+    serializer.is_valid(raise_exception=True)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 223, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 442, in run_validation
+    value = self.to_internal_value(data)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 495, in to_internal_value
+    for field in fields:
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 378, in _writable_fields
+    for field in self.fields.values():
+  File "/usr/local/lib/python3.10/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 372, in fields
+    for key, value in self.get_fields().items():
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1103, in get_fields
+    field_class, field_kwargs = self.build_field(
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1249, in build_field
+    return self.build_unknown_field(field_name, model_class)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1367, in build_unknown_field
+    raise ImproperlyConfigured(
+django.core.exceptions.ImproperlyConfigured: Field name `time` is not valid for model `Appointments` in `service.serializers.OffSerializer`.
+ERROR 2025-05-10 08:43:13,902 log Internal Server Error: /offs/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/app/service/views.py", line 129, in post
+    serializer.is_valid(raise_exception=True)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 223, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 442, in run_validation
+    value = self.to_internal_value(data)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 495, in to_internal_value
+    for field in fields:
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 378, in _writable_fields
+    for field in self.fields.values():
+  File "/usr/local/lib/python3.10/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 372, in fields
+    for key, value in self.get_fields().items():
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1103, in get_fields
+    field_class, field_kwargs = self.build_field(
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1249, in build_field
+    return self.build_unknown_field(field_name, model_class)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1367, in build_unknown_field
+    raise ImproperlyConfigured(
+django.core.exceptions.ImproperlyConfigured: Field name `time` is not valid for model `Appointments` in `service.serializers.OffSerializer`.
+ERROR 2025-05-10 08:47:09,304 log Internal Server Error: /offs/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/app/service/views.py", line 129, in post
+    serializer.is_valid(raise_exception=True)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 223, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 442, in run_validation
+    value = self.to_internal_value(data)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 495, in to_internal_value
+    for field in fields:
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 378, in _writable_fields
+    for field in self.fields.values():
+  File "/usr/local/lib/python3.10/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 372, in fields
+    for key, value in self.get_fields().items():
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1103, in get_fields
+    field_class, field_kwargs = self.build_field(
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1249, in build_field
+    return self.build_unknown_field(field_name, model_class)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1367, in build_unknown_field
+    raise ImproperlyConfigured(
+django.core.exceptions.ImproperlyConfigured: Field name `time` is not valid for model `Appointments` in `service.serializers.OffSerializer`.
+ERROR 2025-05-10 08:47:11,706 log Internal Server Error: /offs/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/app/service/views.py", line 129, in post
+    serializer.is_valid(raise_exception=True)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 223, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 442, in run_validation
+    value = self.to_internal_value(data)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 495, in to_internal_value
+    for field in fields:
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 378, in _writable_fields
+    for field in self.fields.values():
+  File "/usr/local/lib/python3.10/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 372, in fields
+    for key, value in self.get_fields().items():
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1103, in get_fields
+    field_class, field_kwargs = self.build_field(
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1249, in build_field
+    return self.build_unknown_field(field_name, model_class)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1367, in build_unknown_field
+    raise ImproperlyConfigured(
+django.core.exceptions.ImproperlyConfigured: Field name `time` is not valid for model `Appointments` in `service.serializers.OffSerializer`.
+ERROR 2025-05-10 08:47:15,795 log Internal Server Error: /offs/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/app/service/views.py", line 129, in post
+    serializer.is_valid(raise_exception=True)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 223, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 442, in run_validation
+    value = self.to_internal_value(data)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 495, in to_internal_value
+    for field in fields:
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 378, in _writable_fields
+    for field in self.fields.values():
+  File "/usr/local/lib/python3.10/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 372, in fields
+    for key, value in self.get_fields().items():
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1103, in get_fields
+    field_class, field_kwargs = self.build_field(
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1249, in build_field
+    return self.build_unknown_field(field_name, model_class)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1367, in build_unknown_field
+    raise ImproperlyConfigured(
+django.core.exceptions.ImproperlyConfigured: Field name `time` is not valid for model `Appointments` in `service.serializers.OffSerializer`.
+ERROR 2025-05-10 08:47:18,127 log Internal Server Error: /offs/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/app/service/views.py", line 129, in post
+    serializer.is_valid(raise_exception=True)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 223, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 442, in run_validation
+    value = self.to_internal_value(data)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 495, in to_internal_value
+    for field in fields:
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 378, in _writable_fields
+    for field in self.fields.values():
+  File "/usr/local/lib/python3.10/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 372, in fields
+    for key, value in self.get_fields().items():
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1103, in get_fields
+    field_class, field_kwargs = self.build_field(
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1249, in build_field
+    return self.build_unknown_field(field_name, model_class)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1367, in build_unknown_field
+    raise ImproperlyConfigured(
+django.core.exceptions.ImproperlyConfigured: Field name `time` is not valid for model `Appointments` in `service.serializers.OffSerializer`.
+ERROR 2025-05-10 08:48:31,638 log Internal Server Error: /offs/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/app/service/views.py", line 129, in post
+    serializer.is_valid(raise_exception=True)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 223, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 442, in run_validation
+    value = self.to_internal_value(data)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 495, in to_internal_value
+    for field in fields:
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 378, in _writable_fields
+    for field in self.fields.values():
+  File "/usr/local/lib/python3.10/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 372, in fields
+    for key, value in self.get_fields().items():
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1103, in get_fields
+    field_class, field_kwargs = self.build_field(
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1249, in build_field
+    return self.build_unknown_field(field_name, model_class)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1367, in build_unknown_field
+    raise ImproperlyConfigured(
+django.core.exceptions.ImproperlyConfigured: Field name `time` is not valid for model `Appointments` in `service.serializers.OffSerializer`.
+ERROR 2025-05-10 08:53:27,646 log Internal Server Error: /offs/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/app/service/views.py", line 129, in post
+    serializer.is_valid(raise_exception=True)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 223, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 442, in run_validation
+    value = self.to_internal_value(data)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 495, in to_internal_value
+    for field in fields:
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 378, in _writable_fields
+    for field in self.fields.values():
+  File "/usr/local/lib/python3.10/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 372, in fields
+    for key, value in self.get_fields().items():
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1103, in get_fields
+    field_class, field_kwargs = self.build_field(
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1249, in build_field
+    return self.build_unknown_field(field_name, model_class)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1367, in build_unknown_field
+    raise ImproperlyConfigured(
+django.core.exceptions.ImproperlyConfigured: Field name `time` is not valid for model `Appointments` in `service.serializers.OffSerializer`.
+ERROR 2025-05-10 08:55:06,659 log Internal Server Error: /offs/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/app/service/views.py", line 129, in post
+    serializer.is_valid(raise_exception=True)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 223, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 442, in run_validation
+    value = self.to_internal_value(data)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 495, in to_internal_value
+    for field in fields:
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 378, in _writable_fields
+    for field in self.fields.values():
+  File "/usr/local/lib/python3.10/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 372, in fields
+    for key, value in self.get_fields().items():
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1103, in get_fields
+    field_class, field_kwargs = self.build_field(
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1249, in build_field
+    return self.build_unknown_field(field_name, model_class)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1367, in build_unknown_field
+    raise ImproperlyConfigured(
+django.core.exceptions.ImproperlyConfigured: Field name `time` is not valid for model `Appointments` in `service.serializers.OffSerializer`.
+ERROR 2025-05-10 08:55:07,592 log Internal Server Error: /offs/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/app/service/views.py", line 129, in post
+    serializer.is_valid(raise_exception=True)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 223, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 442, in run_validation
+    value = self.to_internal_value(data)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 495, in to_internal_value
+    for field in fields:
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 378, in _writable_fields
+    for field in self.fields.values():
+  File "/usr/local/lib/python3.10/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 372, in fields
+    for key, value in self.get_fields().items():
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1103, in get_fields
+    field_class, field_kwargs = self.build_field(
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1249, in build_field
+    return self.build_unknown_field(field_name, model_class)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1367, in build_unknown_field
+    raise ImproperlyConfigured(
+django.core.exceptions.ImproperlyConfigured: Field name `time` is not valid for model `Appointments` in `service.serializers.OffSerializer`.
+ERROR 2025-05-10 08:57:21,653 log Internal Server Error: /offs/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/app/service/views.py", line 129, in post
+    serializer.is_valid(raise_exception=True)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 223, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 442, in run_validation
+    value = self.to_internal_value(data)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 495, in to_internal_value
+    for field in fields:
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 378, in _writable_fields
+    for field in self.fields.values():
+  File "/usr/local/lib/python3.10/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 372, in fields
+    for key, value in self.get_fields().items():
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1103, in get_fields
+    field_class, field_kwargs = self.build_field(
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1249, in build_field
+    return self.build_unknown_field(field_name, model_class)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1367, in build_unknown_field
+    raise ImproperlyConfigured(
+django.core.exceptions.ImproperlyConfigured: Field name `time` is not valid for model `Appointments` in `service.serializers.OffSerializer`.
+ERROR 2025-05-10 08:57:28,922 log Internal Server Error: /offs/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/app/service/views.py", line 129, in post
+    serializer.is_valid(raise_exception=True)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 223, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 442, in run_validation
+    value = self.to_internal_value(data)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 495, in to_internal_value
+    for field in fields:
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 378, in _writable_fields
+    for field in self.fields.values():
+  File "/usr/local/lib/python3.10/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 372, in fields
+    for key, value in self.get_fields().items():
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1103, in get_fields
+    field_class, field_kwargs = self.build_field(
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1249, in build_field
+    return self.build_unknown_field(field_name, model_class)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1367, in build_unknown_field
+    raise ImproperlyConfigured(
+django.core.exceptions.ImproperlyConfigured: Field name `time` is not valid for model `Appointments` in `service.serializers.OffSerializer`.
+ERROR 2025-05-10 08:57:35,495 log Internal Server Error: /offs/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/app/service/views.py", line 129, in post
+    serializer.is_valid(raise_exception=True)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 223, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 442, in run_validation
+    value = self.to_internal_value(data)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 495, in to_internal_value
+    for field in fields:
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 378, in _writable_fields
+    for field in self.fields.values():
+  File "/usr/local/lib/python3.10/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 372, in fields
+    for key, value in self.get_fields().items():
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1103, in get_fields
+    field_class, field_kwargs = self.build_field(
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1249, in build_field
+    return self.build_unknown_field(field_name, model_class)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1367, in build_unknown_field
+    raise ImproperlyConfigured(
+django.core.exceptions.ImproperlyConfigured: Field name `time` is not valid for model `Appointments` in `service.serializers.OffSerializer`.
+ERROR 2025-05-10 08:57:36,270 log Internal Server Error: /offs/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/app/service/views.py", line 129, in post
+    serializer.is_valid(raise_exception=True)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 223, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 442, in run_validation
+    value = self.to_internal_value(data)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 495, in to_internal_value
+    for field in fields:
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 378, in _writable_fields
+    for field in self.fields.values():
+  File "/usr/local/lib/python3.10/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 372, in fields
+    for key, value in self.get_fields().items():
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1103, in get_fields
+    field_class, field_kwargs = self.build_field(
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1249, in build_field
+    return self.build_unknown_field(field_name, model_class)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1367, in build_unknown_field
+    raise ImproperlyConfigured(
+django.core.exceptions.ImproperlyConfigured: Field name `time` is not valid for model `Appointments` in `service.serializers.OffSerializer`.
+ERROR 2025-05-10 08:57:36,833 log Internal Server Error: /offs/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/app/service/views.py", line 129, in post
+    serializer.is_valid(raise_exception=True)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 223, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 442, in run_validation
+    value = self.to_internal_value(data)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 495, in to_internal_value
+    for field in fields:
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 378, in _writable_fields
+    for field in self.fields.values():
+  File "/usr/local/lib/python3.10/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 372, in fields
+    for key, value in self.get_fields().items():
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1103, in get_fields
+    field_class, field_kwargs = self.build_field(
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1249, in build_field
+    return self.build_unknown_field(field_name, model_class)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1367, in build_unknown_field
+    raise ImproperlyConfigured(
+django.core.exceptions.ImproperlyConfigured: Field name `time` is not valid for model `Appointments` in `service.serializers.OffSerializer`.
+ERROR 2025-05-12 09:31:43,034 log Internal Server Error: /admin/service/appointments/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/options.py", line 681, in get_field
+    return self.fields_map[field_name]
+KeyError: 'is_off'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/admin/utils.py", line 272, in lookup_field
+    f = _get_non_gfk_field(opts, name)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/admin/utils.py", line 303, in _get_non_gfk_field
+    field = opts.get_field(name)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/options.py", line 683, in get_field
+    raise FieldDoesNotExist(
+django.core.exceptions.FieldDoesNotExist: Appointments has no field named 'is_off'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/usr/local/lib/python3.10/site-packages/django/template/response.py", line 111, in render
+    self.content = self.rendered_content
+  File "/usr/local/lib/python3.10/site-packages/django/template/response.py", line 89, in rendered_content
+    return template.render(context, self._request)
+  File "/usr/local/lib/python3.10/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/admin/templatetags/base.py", line 45, in render
+    return super().render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/library.py", line 258, in render
+    _dict = self.func(*resolved_args, **resolved_kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/admin/templatetags/admin_list.py", line 336, in result_list
+    "results": list(results(cl)),
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/admin/templatetags/admin_list.py", line 312, in results
+    yield ResultList(None, items_for_result(cl, res, None))
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/admin/templatetags/admin_list.py", line 303, in __init__
+    super().__init__(*items)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/admin/templatetags/admin_list.py", line 213, in items_for_result
+    f, attr, value = lookup_field(field_name, result, cl.model_admin)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/admin/utils.py", line 281, in lookup_field
+    value = attr(obj)
+  File "/app/service/admin.py", line 10, in is_off
+    return obj.off.is_valid()
+AttributeError: 'NoneType' object has no attribute 'is_valid'
+ERROR 2025-05-12 09:32:37,698 log Internal Server Error: /admin/service/appointments/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/options.py", line 681, in get_field
+    return self.fields_map[field_name]
+KeyError: 'is_off'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/admin/utils.py", line 272, in lookup_field
+    f = _get_non_gfk_field(opts, name)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/admin/utils.py", line 303, in _get_non_gfk_field
+    field = opts.get_field(name)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/options.py", line 683, in get_field
+    raise FieldDoesNotExist(
+django.core.exceptions.FieldDoesNotExist: Appointments has no field named 'is_off'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/usr/local/lib/python3.10/site-packages/django/template/response.py", line 111, in render
+    self.content = self.rendered_content
+  File "/usr/local/lib/python3.10/site-packages/django/template/response.py", line 89, in rendered_content
+    return template.render(context, self._request)
+  File "/usr/local/lib/python3.10/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/admin/templatetags/base.py", line 45, in render
+    return super().render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/library.py", line 258, in render
+    _dict = self.func(*resolved_args, **resolved_kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/admin/templatetags/admin_list.py", line 336, in result_list
+    "results": list(results(cl)),
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/admin/templatetags/admin_list.py", line 312, in results
+    yield ResultList(None, items_for_result(cl, res, None))
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/admin/templatetags/admin_list.py", line 303, in __init__
+    super().__init__(*items)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/admin/templatetags/admin_list.py", line 213, in items_for_result
+    f, attr, value = lookup_field(field_name, result, cl.model_admin)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/admin/utils.py", line 281, in lookup_field
+    value = attr(obj)
+  File "/app/service/admin.py", line 10, in is_off
+    if obj.off:
+AttributeError: 'NoneType' object has no attribute 'is_valid'
+ERROR 2025-05-12 09:32:38,677 log Internal Server Error: /admin/service/appointments/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/options.py", line 681, in get_field
+    return self.fields_map[field_name]
+KeyError: 'is_off'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/admin/utils.py", line 272, in lookup_field
+    f = _get_non_gfk_field(opts, name)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/admin/utils.py", line 303, in _get_non_gfk_field
+    field = opts.get_field(name)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/options.py", line 683, in get_field
+    raise FieldDoesNotExist(
+django.core.exceptions.FieldDoesNotExist: Appointments has no field named 'is_off'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/usr/local/lib/python3.10/site-packages/django/template/response.py", line 111, in render
+    self.content = self.rendered_content
+  File "/usr/local/lib/python3.10/site-packages/django/template/response.py", line 89, in rendered_content
+    return template.render(context, self._request)
+  File "/usr/local/lib/python3.10/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/admin/templatetags/base.py", line 45, in render
+    return super().render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/library.py", line 258, in render
+    _dict = self.func(*resolved_args, **resolved_kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/admin/templatetags/admin_list.py", line 336, in result_list
+    "results": list(results(cl)),
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/admin/templatetags/admin_list.py", line 312, in results
+    yield ResultList(None, items_for_result(cl, res, None))
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/admin/templatetags/admin_list.py", line 303, in __init__
+    super().__init__(*items)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/admin/templatetags/admin_list.py", line 213, in items_for_result
+    f, attr, value = lookup_field(field_name, result, cl.model_admin)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/admin/utils.py", line 281, in lookup_field
+    value = attr(obj)
+  File "/app/service/admin.py", line 10, in is_off
+    if obj.off:
+AttributeError: 'NoneType' object has no attribute 'is_valid'
+ERROR 2025-05-12 09:37:03,749 log Internal Server Error: /hairs/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/mixins.py", line 46, in list
+    return Response(serializer.data)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 795, in data
+    ret = super().data
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 249, in data
+    self._data = self.to_representation(self.instance)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 713, in to_representation
+    return [
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 714, in <listcomp>
+    self.child.to_representation(item) for item in iterable
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 523, in to_representation
+    for field in fields:
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 384, in _readable_fields
+    for field in self.fields.values():
+  File "/usr/local/lib/python3.10/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 372, in fields
+    for key, value in self.get_fields().items():
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1103, in get_fields
+    field_class, field_kwargs = self.build_field(
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1249, in build_field
+    return self.build_unknown_field(field_name, model_class)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1367, in build_unknown_field
+    raise ImproperlyConfigured(
+django.core.exceptions.ImproperlyConfigured: Field name `final_price` is not valid for model `HairStyle` in `service.serializers.HairStylesSerializer`.
+ERROR 2025-05-12 09:37:05,027 log Internal Server Error: /hairs/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/mixins.py", line 46, in list
+    return Response(serializer.data)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 795, in data
+    ret = super().data
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 249, in data
+    self._data = self.to_representation(self.instance)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 713, in to_representation
+    return [
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 714, in <listcomp>
+    self.child.to_representation(item) for item in iterable
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 523, in to_representation
+    for field in fields:
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 384, in _readable_fields
+    for field in self.fields.values():
+  File "/usr/local/lib/python3.10/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 372, in fields
+    for key, value in self.get_fields().items():
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1103, in get_fields
+    field_class, field_kwargs = self.build_field(
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1249, in build_field
+    return self.build_unknown_field(field_name, model_class)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1367, in build_unknown_field
+    raise ImproperlyConfigured(
+django.core.exceptions.ImproperlyConfigured: Field name `final_price` is not valid for model `HairStyle` in `service.serializers.HairStylesSerializer`.
+ERROR 2025-05-12 09:37:06,694 log Internal Server Error: /hairs/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/mixins.py", line 46, in list
+    return Response(serializer.data)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 795, in data
+    ret = super().data
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 249, in data
+    self._data = self.to_representation(self.instance)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 713, in to_representation
+    return [
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 714, in <listcomp>
+    self.child.to_representation(item) for item in iterable
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 523, in to_representation
+    for field in fields:
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 384, in _readable_fields
+    for field in self.fields.values():
+  File "/usr/local/lib/python3.10/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 372, in fields
+    for key, value in self.get_fields().items():
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1103, in get_fields
+    field_class, field_kwargs = self.build_field(
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1249, in build_field
+    return self.build_unknown_field(field_name, model_class)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1367, in build_unknown_field
+    raise ImproperlyConfigured(
+django.core.exceptions.ImproperlyConfigured: Field name `final_price` is not valid for model `HairStyle` in `service.serializers.HairStylesSerializer`.
+ERROR 2025-05-12 09:37:07,944 log Internal Server Error: /hairs/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/mixins.py", line 46, in list
+    return Response(serializer.data)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 795, in data
+    ret = super().data
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 249, in data
+    self._data = self.to_representation(self.instance)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 713, in to_representation
+    return [
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 714, in <listcomp>
+    self.child.to_representation(item) for item in iterable
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 523, in to_representation
+    for field in fields:
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 384, in _readable_fields
+    for field in self.fields.values():
+  File "/usr/local/lib/python3.10/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 372, in fields
+    for key, value in self.get_fields().items():
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1103, in get_fields
+    field_class, field_kwargs = self.build_field(
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1249, in build_field
+    return self.build_unknown_field(field_name, model_class)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1367, in build_unknown_field
+    raise ImproperlyConfigured(
+django.core.exceptions.ImproperlyConfigured: Field name `final_price` is not valid for model `HairStyle` in `service.serializers.HairStylesSerializer`.
+ERROR 2025-05-12 09:37:09,316 log Internal Server Error: /hairs/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/mixins.py", line 46, in list
+    return Response(serializer.data)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 795, in data
+    ret = super().data
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 249, in data
+    self._data = self.to_representation(self.instance)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 713, in to_representation
+    return [
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 714, in <listcomp>
+    self.child.to_representation(item) for item in iterable
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 523, in to_representation
+    for field in fields:
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 384, in _readable_fields
+    for field in self.fields.values():
+  File "/usr/local/lib/python3.10/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 372, in fields
+    for key, value in self.get_fields().items():
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1103, in get_fields
+    field_class, field_kwargs = self.build_field(
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1249, in build_field
+    return self.build_unknown_field(field_name, model_class)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1367, in build_unknown_field
+    raise ImproperlyConfigured(
+django.core.exceptions.ImproperlyConfigured: Field name `final_price` is not valid for model `HairStyle` in `service.serializers.HairStylesSerializer`.
+ERROR 2025-05-12 09:37:11,105 log Internal Server Error: /hairs/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/mixins.py", line 46, in list
+    return Response(serializer.data)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 795, in data
+    ret = super().data
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 249, in data
+    self._data = self.to_representation(self.instance)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 713, in to_representation
+    return [
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 714, in <listcomp>
+    self.child.to_representation(item) for item in iterable
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 523, in to_representation
+    for field in fields:
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 384, in _readable_fields
+    for field in self.fields.values():
+  File "/usr/local/lib/python3.10/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 372, in fields
+    for key, value in self.get_fields().items():
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1103, in get_fields
+    field_class, field_kwargs = self.build_field(
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1249, in build_field
+    return self.build_unknown_field(field_name, model_class)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1367, in build_unknown_field
+    raise ImproperlyConfigured(
+django.core.exceptions.ImproperlyConfigured: Field name `final_price` is not valid for model `HairStyle` in `service.serializers.HairStylesSerializer`.
+ERROR 2025-05-12 09:37:12,994 log Internal Server Error: /hairs/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/mixins.py", line 46, in list
+    return Response(serializer.data)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 795, in data
+    ret = super().data
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 249, in data
+    self._data = self.to_representation(self.instance)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 713, in to_representation
+    return [
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 714, in <listcomp>
+    self.child.to_representation(item) for item in iterable
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 523, in to_representation
+    for field in fields:
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 384, in _readable_fields
+    for field in self.fields.values():
+  File "/usr/local/lib/python3.10/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 372, in fields
+    for key, value in self.get_fields().items():
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1103, in get_fields
+    field_class, field_kwargs = self.build_field(
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1249, in build_field
+    return self.build_unknown_field(field_name, model_class)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1367, in build_unknown_field
+    raise ImproperlyConfigured(
+django.core.exceptions.ImproperlyConfigured: Field name `final_price` is not valid for model `HairStyle` in `service.serializers.HairStylesSerializer`.
+ERROR 2025-05-12 09:37:14,755 log Internal Server Error: /hairs/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/mixins.py", line 46, in list
+    return Response(serializer.data)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 795, in data
+    ret = super().data
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 249, in data
+    self._data = self.to_representation(self.instance)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 713, in to_representation
+    return [
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 714, in <listcomp>
+    self.child.to_representation(item) for item in iterable
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 523, in to_representation
+    for field in fields:
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 384, in _readable_fields
+    for field in self.fields.values():
+  File "/usr/local/lib/python3.10/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 372, in fields
+    for key, value in self.get_fields().items():
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1103, in get_fields
+    field_class, field_kwargs = self.build_field(
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1249, in build_field
+    return self.build_unknown_field(field_name, model_class)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1367, in build_unknown_field
+    raise ImproperlyConfigured(
+django.core.exceptions.ImproperlyConfigured: Field name `final_price` is not valid for model `HairStyle` in `service.serializers.HairStylesSerializer`.
+ERROR 2025-05-12 09:37:16,631 log Internal Server Error: /hairs/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/mixins.py", line 46, in list
+    return Response(serializer.data)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 795, in data
+    ret = super().data
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 249, in data
+    self._data = self.to_representation(self.instance)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 713, in to_representation
+    return [
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 714, in <listcomp>
+    self.child.to_representation(item) for item in iterable
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 523, in to_representation
+    for field in fields:
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 384, in _readable_fields
+    for field in self.fields.values():
+  File "/usr/local/lib/python3.10/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 372, in fields
+    for key, value in self.get_fields().items():
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1103, in get_fields
+    field_class, field_kwargs = self.build_field(
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1249, in build_field
+    return self.build_unknown_field(field_name, model_class)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1367, in build_unknown_field
+    raise ImproperlyConfigured(
+django.core.exceptions.ImproperlyConfigured: Field name `final_price` is not valid for model `HairStyle` in `service.serializers.HairStylesSerializer`.
+ERROR 2025-05-12 09:37:18,295 log Internal Server Error: /hairs/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/mixins.py", line 46, in list
+    return Response(serializer.data)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 795, in data
+    ret = super().data
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 249, in data
+    self._data = self.to_representation(self.instance)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 713, in to_representation
+    return [
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 714, in <listcomp>
+    self.child.to_representation(item) for item in iterable
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 523, in to_representation
+    for field in fields:
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 384, in _readable_fields
+    for field in self.fields.values():
+  File "/usr/local/lib/python3.10/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 372, in fields
+    for key, value in self.get_fields().items():
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1103, in get_fields
+    field_class, field_kwargs = self.build_field(
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1249, in build_field
+    return self.build_unknown_field(field_name, model_class)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1367, in build_unknown_field
+    raise ImproperlyConfigured(
+django.core.exceptions.ImproperlyConfigured: Field name `final_price` is not valid for model `HairStyle` in `service.serializers.HairStylesSerializer`.
+ERROR 2025-05-12 09:39:23,220 log Internal Server Error: /hairs/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/mixins.py", line 46, in list
+    return Response(serializer.data)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 795, in data
+    ret = super().data
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 249, in data
+    self._data = self.to_representation(self.instance)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 713, in to_representation
+    return [
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 714, in <listcomp>
+    self.child.to_representation(item) for item in iterable
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 523, in to_representation
+    for field in fields:
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 384, in _readable_fields
+    for field in self.fields.values():
+  File "/usr/local/lib/python3.10/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 372, in fields
+    for key, value in self.get_fields().items():
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1103, in get_fields
+    field_class, field_kwargs = self.build_field(
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1249, in build_field
+    return self.build_unknown_field(field_name, model_class)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1367, in build_unknown_field
+    raise ImproperlyConfigured(
+django.core.exceptions.ImproperlyConfigured: Field name `final_price` is not valid for model `HairStyle` in `service.serializers.HairStylesSerializer`.
+ERROR 2025-05-12 09:39:25,228 log Internal Server Error: /hairs/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/mixins.py", line 46, in list
+    return Response(serializer.data)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 795, in data
+    ret = super().data
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 249, in data
+    self._data = self.to_representation(self.instance)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 713, in to_representation
+    return [
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 714, in <listcomp>
+    self.child.to_representation(item) for item in iterable
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 523, in to_representation
+    for field in fields:
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 384, in _readable_fields
+    for field in self.fields.values():
+  File "/usr/local/lib/python3.10/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 372, in fields
+    for key, value in self.get_fields().items():
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1103, in get_fields
+    field_class, field_kwargs = self.build_field(
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1249, in build_field
+    return self.build_unknown_field(field_name, model_class)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1367, in build_unknown_field
+    raise ImproperlyConfigured(
+django.core.exceptions.ImproperlyConfigured: Field name `final_price` is not valid for model `HairStyle` in `service.serializers.HairStylesSerializer`.
+ERROR 2025-05-12 09:39:26,310 log Internal Server Error: /hairs/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/mixins.py", line 46, in list
+    return Response(serializer.data)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 795, in data
+    ret = super().data
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 249, in data
+    self._data = self.to_representation(self.instance)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 713, in to_representation
+    return [
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 714, in <listcomp>
+    self.child.to_representation(item) for item in iterable
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 523, in to_representation
+    for field in fields:
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 384, in _readable_fields
+    for field in self.fields.values():
+  File "/usr/local/lib/python3.10/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 372, in fields
+    for key, value in self.get_fields().items():
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1103, in get_fields
+    field_class, field_kwargs = self.build_field(
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1249, in build_field
+    return self.build_unknown_field(field_name, model_class)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1367, in build_unknown_field
+    raise ImproperlyConfigured(
+django.core.exceptions.ImproperlyConfigured: Field name `final_price` is not valid for model `HairStyle` in `service.serializers.HairStylesSerializer`.
+ERROR 2025-05-12 09:39:27,580 log Internal Server Error: /hairs/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/mixins.py", line 46, in list
+    return Response(serializer.data)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 795, in data
+    ret = super().data
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 249, in data
+    self._data = self.to_representation(self.instance)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 713, in to_representation
+    return [
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 714, in <listcomp>
+    self.child.to_representation(item) for item in iterable
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 523, in to_representation
+    for field in fields:
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 384, in _readable_fields
+    for field in self.fields.values():
+  File "/usr/local/lib/python3.10/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 372, in fields
+    for key, value in self.get_fields().items():
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1103, in get_fields
+    field_class, field_kwargs = self.build_field(
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1249, in build_field
+    return self.build_unknown_field(field_name, model_class)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1367, in build_unknown_field
+    raise ImproperlyConfigured(
+django.core.exceptions.ImproperlyConfigured: Field name `final_price` is not valid for model `HairStyle` in `service.serializers.HairStylesSerializer`.
+ERROR 2025-05-12 09:39:28,800 log Internal Server Error: /hairs/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/mixins.py", line 46, in list
+    return Response(serializer.data)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 795, in data
+    ret = super().data
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 249, in data
+    self._data = self.to_representation(self.instance)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 713, in to_representation
+    return [
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 714, in <listcomp>
+    self.child.to_representation(item) for item in iterable
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 523, in to_representation
+    for field in fields:
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 384, in _readable_fields
+    for field in self.fields.values():
+  File "/usr/local/lib/python3.10/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 372, in fields
+    for key, value in self.get_fields().items():
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1103, in get_fields
+    field_class, field_kwargs = self.build_field(
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1249, in build_field
+    return self.build_unknown_field(field_name, model_class)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1367, in build_unknown_field
+    raise ImproperlyConfigured(
+django.core.exceptions.ImproperlyConfigured: Field name `final_price` is not valid for model `HairStyle` in `service.serializers.HairStylesSerializer`.
+ERROR 2025-05-12 09:39:30,262 log Internal Server Error: /hairs/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/mixins.py", line 46, in list
+    return Response(serializer.data)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 795, in data
+    ret = super().data
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 249, in data
+    self._data = self.to_representation(self.instance)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 713, in to_representation
+    return [
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 714, in <listcomp>
+    self.child.to_representation(item) for item in iterable
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 523, in to_representation
+    for field in fields:
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 384, in _readable_fields
+    for field in self.fields.values():
+  File "/usr/local/lib/python3.10/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 372, in fields
+    for key, value in self.get_fields().items():
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1103, in get_fields
+    field_class, field_kwargs = self.build_field(
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1249, in build_field
+    return self.build_unknown_field(field_name, model_class)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1367, in build_unknown_field
+    raise ImproperlyConfigured(
+django.core.exceptions.ImproperlyConfigured: Field name `final_price` is not valid for model `HairStyle` in `service.serializers.HairStylesSerializer`.
+ERROR 2025-05-12 09:39:32,271 log Internal Server Error: /hairs/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/mixins.py", line 46, in list
+    return Response(serializer.data)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 795, in data
+    ret = super().data
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 249, in data
+    self._data = self.to_representation(self.instance)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 713, in to_representation
+    return [
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 714, in <listcomp>
+    self.child.to_representation(item) for item in iterable
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 523, in to_representation
+    for field in fields:
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 384, in _readable_fields
+    for field in self.fields.values():
+  File "/usr/local/lib/python3.10/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 372, in fields
+    for key, value in self.get_fields().items():
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1103, in get_fields
+    field_class, field_kwargs = self.build_field(
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1249, in build_field
+    return self.build_unknown_field(field_name, model_class)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/serializers.py", line 1367, in build_unknown_field
+    raise ImproperlyConfigured(
+django.core.exceptions.ImproperlyConfigured: Field name `final_price` is not valid for model `HairStyle` in `service.serializers.HairStylesSerializer`.
+ERROR 2025-05-12 16:53:09,222 log Internal Server Error: /register/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+  File "/usr/local/lib/python3.10/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/usr/local/lib/python3.10/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connectionpool.py", line 493, in _make_request
+    conn.request(
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connection.py", line 445, in request
+    self.endheaders()
+  File "/usr/local/lib/python3.10/http/client.py", line 1277, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/usr/local/lib/python3.10/http/client.py", line 1037, in _send_output
+    self.send(msg)
+  File "/usr/local/lib/python3.10/http/client.py", line 975, in send
+    self.connect()
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connection.py", line 276, in connect
+    self.sock = self._new_conn()
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connection.py", line 213, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x7f6003aa37f0>: Failed to establish a new connection: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/requests/adapters.py", line 667, in send
+    resp = conn.urlopen(
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+  File "/usr/local/lib/python3.10/site-packages/urllib3/util/retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /o/token/ (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f6003aa37f0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/app/user/views.py", line 78, in post
+    response = requests.post(token_url, data=data)
+  File "/usr/local/lib/python3.10/site-packages/requests/api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/local/lib/python3.10/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/requests/adapters.py", line 700, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /o/token/ (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f6003aa37f0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+ERROR 2025-05-12 16:53:09,224 basehttp "POST /register/ HTTP/1.1" 500 195333
+ERROR 2025-05-12 16:53:10,911 log Internal Server Error: /register/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+  File "/usr/local/lib/python3.10/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/usr/local/lib/python3.10/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connectionpool.py", line 493, in _make_request
+    conn.request(
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connection.py", line 445, in request
+    self.endheaders()
+  File "/usr/local/lib/python3.10/http/client.py", line 1277, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/usr/local/lib/python3.10/http/client.py", line 1037, in _send_output
+    self.send(msg)
+  File "/usr/local/lib/python3.10/http/client.py", line 975, in send
+    self.connect()
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connection.py", line 276, in connect
+    self.sock = self._new_conn()
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connection.py", line 213, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x7f600397cd30>: Failed to establish a new connection: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/requests/adapters.py", line 667, in send
+    resp = conn.urlopen(
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+  File "/usr/local/lib/python3.10/site-packages/urllib3/util/retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /o/token/ (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f600397cd30>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/app/user/views.py", line 78, in post
+    response = requests.post(token_url, data=data)
+  File "/usr/local/lib/python3.10/site-packages/requests/api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/local/lib/python3.10/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/requests/adapters.py", line 700, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /o/token/ (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f600397cd30>: Failed to establish a new connection: [Errno 111] Connection refused'))
+ERROR 2025-05-12 16:53:10,912 basehttp "POST /register/ HTTP/1.1" 500 195333
+ERROR 2025-05-12 16:53:12,756 log Internal Server Error: /register/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+  File "/usr/local/lib/python3.10/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/usr/local/lib/python3.10/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connectionpool.py", line 493, in _make_request
+    conn.request(
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connection.py", line 445, in request
+    self.endheaders()
+  File "/usr/local/lib/python3.10/http/client.py", line 1277, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/usr/local/lib/python3.10/http/client.py", line 1037, in _send_output
+    self.send(msg)
+  File "/usr/local/lib/python3.10/http/client.py", line 975, in send
+    self.connect()
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connection.py", line 276, in connect
+    self.sock = self._new_conn()
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connection.py", line 213, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x7f60039078b0>: Failed to establish a new connection: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/requests/adapters.py", line 667, in send
+    resp = conn.urlopen(
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+  File "/usr/local/lib/python3.10/site-packages/urllib3/util/retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /o/token/ (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f60039078b0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/app/user/views.py", line 78, in post
+    response = requests.post(token_url, data=data)
+  File "/usr/local/lib/python3.10/site-packages/requests/api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/local/lib/python3.10/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/requests/adapters.py", line 700, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /o/token/ (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f60039078b0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+ERROR 2025-05-12 16:53:12,757 basehttp "POST /register/ HTTP/1.1" 500 195333
+ERROR 2025-05-12 16:53:14,573 log Internal Server Error: /register/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+  File "/usr/local/lib/python3.10/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/usr/local/lib/python3.10/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connectionpool.py", line 493, in _make_request
+    conn.request(
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connection.py", line 445, in request
+    self.endheaders()
+  File "/usr/local/lib/python3.10/http/client.py", line 1277, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/usr/local/lib/python3.10/http/client.py", line 1037, in _send_output
+    self.send(msg)
+  File "/usr/local/lib/python3.10/http/client.py", line 975, in send
+    self.connect()
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connection.py", line 276, in connect
+    self.sock = self._new_conn()
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connection.py", line 213, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x7f60039a5fc0>: Failed to establish a new connection: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/requests/adapters.py", line 667, in send
+    resp = conn.urlopen(
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+  File "/usr/local/lib/python3.10/site-packages/urllib3/util/retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /o/token/ (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f60039a5fc0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/app/user/views.py", line 78, in post
+    response = requests.post(token_url, data=data)
+  File "/usr/local/lib/python3.10/site-packages/requests/api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/local/lib/python3.10/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/requests/adapters.py", line 700, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /o/token/ (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f60039a5fc0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+ERROR 2025-05-12 16:53:14,574 basehttp "POST /register/ HTTP/1.1" 500 195332
+ERROR 2025-05-12 17:18:17,023 log Internal Server Error: /register/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/app/user/views.py", line 62, in post
+    if User.objects.filter(username=username).exists():
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/query.py", line 1241, in exists
+    return self.query.has_results(using=self.db)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/sql/query.py", line 566, in has_results
+    return compiler.has_results()
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/sql/compiler.py", line 1528, in has_results
+    return bool(self.execute_sql(SINGLE))
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/sql/compiler.py", line 1558, in execute_sql
+    cursor = self.connection.cursor()
+  File "/usr/local/lib/python3.10/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 330, in cursor
+    return self._cursor()
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 306, in _cursor
+    self.ensure_connection()
+  File "/usr/local/lib/python3.10/site-packages/pytest_django/plugin.py", line 709, in _blocking_wrapper
+    raise RuntimeError(
+RuntimeError: Database access not allowed, use the "django_db" mark, or the "db" or "transactional_db" fixtures to enable it.
+ERROR 2025-05-12 17:25:45,022 log Internal Server Error: /register/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/usr/local/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/app/user/views.py", line 62, in post
+    if User.objects.filter(username=username).exists():
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/query.py", line 1241, in exists
+    return self.query.has_results(using=self.db)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/sql/query.py", line 566, in has_results
+    return compiler.has_results()
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/sql/compiler.py", line 1528, in has_results
+    return bool(self.execute_sql(SINGLE))
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/sql/compiler.py", line 1558, in execute_sql
+    cursor = self.connection.cursor()
+  File "/usr/local/lib/python3.10/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 330, in cursor
+    return self._cursor()
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/base/base.py", line 306, in _cursor
+    self.ensure_connection()
+  File "/usr/local/lib/python3.10/site-packages/pytest_django/plugin.py", line 709, in _blocking_wrapper
+    raise RuntimeError(
+RuntimeError: Database access not allowed, use the "django_db" mark, or the "db" or "transactional_db" fixtures to enable it.
+ERROR 2025-05-13 16:44:16,383 log Internal Server Error: /Appointments/admin/4
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/utils/deprecation.py", line 136, in __call__
+    response = self.process_response(request, response)
+  File "/usr/local/lib/python3.10/site-packages/django/middleware/common.py", line 108, in process_response
+    return self.response_redirect_class(self.get_full_path_with_slash(request))
+  File "/usr/local/lib/python3.10/site-packages/django/middleware/common.py", line 87, in get_full_path_with_slash
+    raise RuntimeError(
+RuntimeError: You called this URL via PATCH, but the URL doesn't end in a slash and you have APPEND_SLASH set. Django can't redirect to the slash URL while maintaining PATCH data. Change your form to point to localhost:8005/Appointments/admin/4/ (note the trailing slash), or set APPEND_SLASH=False in your Django settings.
+ERROR 2025-05-13 16:44:16,384 basehttp "PATCH /Appointments/admin/4 HTTP/1.1" 500 63922

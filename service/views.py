@@ -1,37 +1,41 @@
+# ماژول های داخلی پایتون
+from datetime import datetime
 from random import random
-from django.utils import timezone
-from django.db.models import Q
+from random import *
+# ماژول های rest
+from rest_framework.permissions import AllowAny
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework import viewsets
 from rest_framework.viewsets import ModelViewSet
+# ماژول های جنگو
+from django.utils import timezone
+from django.db.models import Q
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import get_object_or_404
-from random import *
-from rest_framework.permissions import AllowAny
+from django.db.models import Avg
+# ماژول های دیگر
+from drf_spectacular.utils import extend_schema
+#  ماژول های داخلی پروژه
+from user.models import User
 from .models import *
 from .serializers import *
-from django.db.models import Q
-from drf_spectacular.utils import extend_schema
-from django.db.models import Avg
-from user.models import User
 
 
+@extend_schema(summary="دیدن مدل مو های مختلف, تکی و یکجا")
 class HairStylesView(viewsets.ReadOnlyModelViewSet):
+    """لیست کل مدل موها و هر مدل مو رو نشون میده"""
     permission_classes = [AllowAny]
     queryset = HairStyle.objects.all()
     serializer_class = HairStylesSerializer
 
+@extend_schema(summary="برای کنسل کردن رزرو توسط کاربر")
 class AppointmentsView(APIView):
+    """برای کنسل کردن رزرو توسط کاربر"""
     permission_classes = [IsAuthenticated]
-    def post(self, request):
-        serializer = AppointmentsSerializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        serializer.save(user=request.user, status='waiting')
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
 
     def patch(self, request, pk):
         appointments = get_object_or_404(Appointments, pk=pk, user=request.user)
@@ -41,8 +45,9 @@ class AppointmentsView(APIView):
         appointments.save()
         return Response({'detail':'رزرو کنسل شد'}, status=status.HTTP_200_OK)
 
-@extend_schema(summary="عوض کردن وضعیت کاربر", tags=["Admin"])
+@extend_schema(summary="عوض کردن وضعیت کاربر توسط کاربر ادمین", tags=["Admin"])
 class AdminAppointmentsView(APIView):
+    """برای عوض کردن وضعیت یک رزرو توسط ادمین"""
     permission_classes = [IsAdminUser]
 
     def patch(self, request, pk):
@@ -56,74 +61,25 @@ class AdminAppointmentsView(APIView):
         return Response({'detail': 'وضعیت تغییر کرد'}, status=status.HTTP_200_OK)
 
 
-# class OffView(APIView):
-#     permission_classes = [IsAuthenticated]
-#
-#     def get(self, request):
-#         try:
-#             appoint = Appointments.objects.filter(user=request.user, status='approved')
-#         except Exception as e:
-#             return Response({'error':str(e), 'type':e.__class__.__name__}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-#         if len(appoint) % 3 == 1:
-#             offs = Off.objects.filter(is_active=True, start_at__lte=timezone.now(), end_at__gte=timezone.now())
-#             if offs.exists():
-#                 # برای سادگی اولین تخفیف معتبر را برمی‌گردانیم
-#                 off = offs.first()
-#
-#                 off.is_active = True
-#                 return Response({
-#                     "code": off.code,
-#                     "discount_percent": off.discount_percent,
-#                     "description": off.description
-#                 })
-#         else:
-#             return Response(len(appoint), status=status.HTTP_403_FORBIDDEN)
-#
-#             return Response({"detail": "No valid discount available."})
-# class OffView(APIView):
-#     permission_classes = [IsAuthenticated]
-#
-#     def post(self, request):
-#         try:
-#             appoint = Appointments.objects.filter(user=request.user, status='approved')
-#         except Exception as e:
-#             serializer = AppointmentsSerializer(data=request.data)
-#             serializer.is_valid(raise_exception=True)
-#             serializer.save(user=request.user, status='waiting')
-#             return Response(serializer.data, status=status.HTTP_201_CREATED)
-#         if len(appoint) % 3 == 1:
-#             offs = Off.objects.filter(is_active=True, start_at__lte=timezone.now(), end_at__gte=timezone.now())
-#             if offs.exists():
-#                 # برای سادگی اولین تخفیف معتبر را برمی‌گردانیم
-#                 off = offs.first()
-#                 off.is_active = True
-#                 serializer = OffSerializer(data=request.data)
-#                 serializer.is_valid(raise_exception=True)
-#                 serializer.save(user=request.user, status='waiting', off=off)
-#                 return Response(serializer.data, status=status.HTTP_201_CREATED)
-#
-#                 # return Response({
-#                 #     "appointment_id": appointment.id,
-#                 #     "hairstyle": hairstyle.name,
-#                 #     "original_price": str(hairstyle.price),
-#                 #     "final_price": str(appointment.price()),
-#                 #     "discount_applied": off.code if off else None,
-#                 # }, status=status.HTTP_201_CREATED)
-#         else:
-#             return Response(len(appoint), status=status.HTTP_403_FORBIDDEN)
-#
-#             return Response({"detail": "No valid discount available."})
-@extend_schema(summary="ایجاد رزرو و بررسی تعداد رزرو های پیشین(اگر باقی مونده تعداد رزرو های موفق به 3 صفر باشه تخفیف اعمال میشه)")
+@extend_schema(
+    summary="ایجاد رزرو با بررسی تخفیف",
+    description="اگر کاربر تعداد رزرو تایید شده‌اش مضربی از 3 باشد، تخفیف فعال اعمال می‌شود.")
 class OffView(APIView):
-    permission_classes = [IsAuthenticated]
+    '''این ویو رزرو ثبت میکنه واگر کاربر تعداد رزرو تایید شده‌اش مضربی از 3 باشد، تخفیف فعال اعمال می‌شود.
+    همچنین در متود get رزرو هایی با وضعیت انجام شده و همچنین در حال انتظار و کنسل شده رو به کاربر نشون میده'''
+    permission_classes = [permissions.IsAuthenticated]
 
     def post(self, request):
-        approved_appointments = Appointments.objects.filter(user=request.user, status=Appointments.Status.approved)
-        # total = approved_appointments + 1
-        # چک می‌کنیم آیا نوبت جدید واجد شرایط تخفیف هست یا نه
-        is_eligible_for_discount = len(approved_appointments) % 3 == 0
+        serializer = AppointmentCreateSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
 
-        # اگر واجد شرایط تخفیف است
+        user = request.user
+        date = serializer.validated_data['date']
+        time_slot = serializer.validated_data['time_slot']
+
+        approved_appointments = Appointments.objects.filter(user=user, status=Appointments.Status.approved)
+        is_eligible_for_discount = len(approved_appointments) > 0 and len(approved_appointments) % 3 == 0
+
         if is_eligible_for_discount:
             active_offs = Off.objects.filter(
                 is_active=True,
@@ -132,36 +88,55 @@ class OffView(APIView):
             )
             if active_offs.exists():
                 off = active_offs.first()
-                serializer = OffSerializer(data=request.data)
-                serializer.is_valid(raise_exception=True)
-                serializer.save(user=request.user, status='waiting', off=off)
-                # response_data = OffSerializer(appointment).data
-                response_data = serializer.data
-                return Response(response_data, status=status.HTTP_201_CREATED)
+                # ثبت رزرو با تخفیف
+                serializer.save(user=user, status=Appointments.Status.waiting, off=off,
+                                    date=date, time_slot=time_slot)
+                return Response(serializer.data, status=status.HTTP_201_CREATED)
 
-        # در غیر این صورت، نوبت بدون تخفیف ثبت می‌شود
-        serializer = AppointmentsSerializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        serializer.save(user=request.user, status='waiting')
-        return Response({
-            'len': is_eligible_for_discount,
-            'appointment': serializer.data
-        }, status=status.HTTP_201_CREATED)
+        # ثبت رزرو بدون تخفیف
+        serializer.save(user=user, date=date, time_slot=time_slot,
+                                                  status=Appointments.Status.waiting)
+        return Response({"message": "رزرو ثبت شد(بدون تخفیف)", "id": serializer.instance.id}, status=status.HTTP_201_CREATED)
 
     def get(self, request):
+        appo_approved = Appointments.objects.filter(user=request.user, status="approved")
+        appo = Appointments.objects.filter(user=request.user).exclude(status="approved")
+        serializer1 = AppointmentCreateSerializer(appo_approved)
+        serializer2 = AppointmentCreateSerializer(appo)
 
-        reservs1 = Appointments.objects.filter(user=request.user, status='waiting')
-        reservs2 = Appointments.objects.filter(user=request.user, status='approved')
+        return Response({'detail':f'your Appointments:',
+                         'approved_Appointment':serializer1.data,
+                         'other_Appointment':serializer2.data})
+#________________________________________________________________________________________________________________________
+@extend_schema(summary="نشان دادن وقت های خالی")
+class AvailableTimeSlotsAPIView(APIView):
+    '''این ویو طبق ورودی کاربر نوبت های خالی اون روز رو بدست میاره'''
+    permission_classes = [permissions.AllowAny]  # اجازه دسترسی بدون لاگین
 
-        serializer1 = OffSerializer(reservs1, many=True)
-        serializer2 = OffSerializer(reservs2, many=True)
+    def get(self, request):
+        date_str = request.query_params.get('date')
 
-        return Response({'waiting reservs': serializer1.data,
-                         'approved reservs': serializer2.data},
-                        status=status.HTTP_200_OK)
+        if not date_str:
+            return Response({'detail':'لطفا مقدار روز رو اورد کنید'},status=status.HTTP_404_NOT_FOUND)
+        try:
+            date = datetime.strptime(date_str, '%y-%m-%d')
+        except ValueError:
+            return Response({'detail':'لطفا مقدار درست وارد کنید'}, status=400)
 
+        booked_time = Appointments.filter(date=date).values_list('time_slot_id', flat=True)
+        available_time = TimeSlot.objects.exclude(id__in=booked_time)
 
+        data = [
+            {
+                'start_time':slot.start_time,
+                'end_time': slot.end_time,
+                'id': slot.id,
+            }
+            for slot in available_time
+        ]
+        return Response(data, status=200)
 
+@extend_schema(summary="مدیریت سالن")
 class HallManagementView(APIView):
     permission_classes = [IsAuthenticated]
 
@@ -171,17 +146,22 @@ class HallManagementView(APIView):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
         
-
+@extend_schema(summary="سرچ بین مدل موها")
 class SearchView(APIView):
+    '''سرچ در بین مدل موها'''
 
-    def get(self, name):
+    def get(self, request, name):
         search = request.data.get('search')
         search = HairStyle.objects.filter(name__icontains=name)
         serializer = HairStylesSerializer(search, many=True)
         return Response(serializer.data, 200)
 
-@extend_schema(summary="امتیاز و نظر کاربرانی راجب سرویس")
+@extend_schema(
+    summary="ایجاد نظر",
+    description="اگر کاربر حداقل یک رزرو(چه انجام شده چه در حال انتظار)"
+                " میتونه نظر بده.")
 class CommentView(APIView):
+    """ایجاد نظرو دادن امتیاز توسط کاربر به شرطی که یک رزرو(چه انجام شده چه در حال انتظار) داشته باشه"""
     permission_classes = [IsAuthenticated]
 
     def post(self, request):
@@ -197,36 +177,53 @@ class CommentView(APIView):
 
 
 
-@extend_schema(summary="میانگین امتیاز کاربران", tags=["Admin"])
+@extend_schema(summary="میانگین امتیاز و نظرات هر کاربر", tags=["Admin"])
 class CommentStatsView(APIView):
+    """میانگین امتیاز و نظرات هر کاربر رو نشون میده """
     permission_classes = [IsAdminUser]
 
     def get(self, request):
-        users_with_avg = User.objects.annotate(
-            average_point=Avg('comments__point')
-        ).order_by('-average_point')
+
+        avarage_user = User.objects.annotate(
+            avarage_point=Avg('comments__point')
+        ).order_by('avarage_point')
 
         data = []
-        for user in users_with_avg:
-            if user.average_point is None:
-                continue  # کاربرانی که هنوز نظری ندادن رد می‌کنیم
+        for user in avarage_user:
+            if user.avarage_point is None:
+                continue
 
-            # لیست کامنت‌هاش رو می‌گیریم
-        comments = Comment.objects.filter(user=user).order_by('-created_at')
-        comments_data = [
-            {
-                "point": comment.point,
-                "description": comment.description,
-                "created_at": comment.created_at,
-            }
-            for comment in comments
-        ]
+            comments = Comment.objects.filter(user=user).order_by('created_at')
+            comment_list = [
+                {
+                    'comments_point': comment.point,
+                    'comments_description': comment.description,
+                    'comments_created_at': comment.created_at
+                }
+                for comment in comments
+            ]
 
-        data.append({
-            "user_id": user.id,
-            "username": user.username,
-            "average_point": round(user.average_point, 2),
-            "comments": comments_data,
-        })
+            data.append({
+                'user_id': user.id,
+                'user_username': user.username,
+                'avarage_point': round(user.avarage_point, 2),
+                'comments': comment_list
+            })
 
-        return Response(data)
+        return Response(data, status=200)
+
+@extend_schema(summary="میانگین امتیازات کلی کاربران و کل نظرات ", tags=["Admin"])
+class CommentAllStatsView(APIView):
+    """میانگین کلی امتیازات و کل نظرات رو نشون میده"""
+    permission_classes = [IsAdminUser]
+
+    def get(self, request):
+        average_point = Comment.objects.aggregate(avg_point=Avg('point'))['avg_point']
+        comments = Comment.objects.all()
+
+        serializer = CommentSerializer(comments, many=True)
+
+        return Response({
+            'average_point': round(average_point or 0, 2),
+            'comments': serializer.data
+        }, status=200)

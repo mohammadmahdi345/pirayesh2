@@ -19,6 +19,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'service',
     'user',
+    'payment',
 ]
 CSRF_TRUSTED_ORIGINS = ['http://localhost:8000', 'http://127.0.0.1:8000', 'http://0.0.0.0:8000']
 
@@ -60,8 +61,9 @@ WSGI_APPLICATION = 'pirayesh.wsgi.application'
 
 # SECRET_KEY = config("DJANGO_SECRET_KEY")
 
-OAUTH_CLIENT_ID = 'UwawV9d5vmuKjyR1aMGOiSeSsz56JDjrxTBOLla4'
-OAUTH_CLIENT_SECRET = 'J3b2d6z8mXziHxf5qm2eOhCb2OcwXH60P3GVbaY2XYOpfA1vGt3S2EKL1CsvA9wKg2cb4jujAsyJk2BUWV7XHr8CVUkPsFbyuPTGQNUzyvGdTpFLvVcSuZAhZsRWUYCM'
+
+OAUTH_CLIENT_ID = config('OAUTH_CLIENT_ID')
+OAUTH_CLIENT_SECRET = config('OAUTH_CLIENT_SECRET')
 
 # DATABASES = {
 #     'default': {

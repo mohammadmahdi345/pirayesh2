@@ -1,14 +1,17 @@
 import logging
+from datetime import timedelta
 from celery import shared_task
+
+from django.conf import settings
 from django.core.mail import send_mail
 from django.utils import timezone
 
 from user.models import User
-
 from .models import HallManagement, Appointments, Off
 
 logger = logging.getLogger(__name__)  # ایجاد logger برای این ماژول
 
+# تسکی برای ارسال نوتیف به ایمیل کاربران وقتی سالن باز یا بسته میشه
 @shared_task
 def send_post_notification():
     try:
@@ -40,8 +43,7 @@ def send_post_notification():
 
 
 
-from django.db.models import Count
-
+# تسکی برای ارسال نوتیف به ایمیل کاربران وقتی کد تخفیف براشون فعال میشه
 @shared_task
 def send_off_notification():
     users = User.objects.filter(notification=True)
@@ -75,3 +77,39 @@ def send_off_notification():
                     logger.info(f"Email sent to {user.email}")
                 except Exception as e:
                     logger.error(f"Failed to send email to {user.email}: {str(e)}", exc_info=True)
+
+
+# تسکی برای ارسال نوتیف به ایمیل کاربران وقتی دو ساعت به وقت سالنشون مونده
+@shared_task
+def send_time_slot_notification():
+    now = timezone.now()
+    # حدود ±10 دقیقه برای بازه زمانی تعیین می‌کنیم
+    lower_bound = (now + timedelta(hours=2, minutes=-10)).time()
+    upper_bound = (now + timedelta(hours=2, minutes=10)).time()
+
+    appointments = Appointments.objects.filter(
+        status=Appointments.Status.waiting,
+        notified_before_slot=False,
+        time_slot__start_time__range=(lower_bound, upper_bound),
+        date=now.date()
+    )
+
+    for appointment in appointments:
+        user = appointment.user
+        if user.notification:
+            try:
+                send_mail(
+                    subject='زمان سالن نزدیک است!!',
+                    message=(
+                        f"سلام {user.first_name} عزیز،\n"
+                        f"فقط دو ساعت تا نوبت سالن باقی مونده، فراموش نکن!"
+                    ),
+                    from_email=settings.DEFAULT_FROM_EMAIL,
+                    recipient_list=[user.email],
+                    fail_silently=False
+                )
+                appointment.notified_before_slot = True
+                appointment.save()
+                logger.info(f"Email sent to {user.email}")
+            except Exception as e:
+                logger.error(f"Failed to send email to {user.email}: {str(e)}", exc_info=True)

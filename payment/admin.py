@@ -1,3 +1,7 @@
 from django.contrib import admin
 
-# Register your models here.
+from payment.models import GateWay, Payment
+
+admin.site.register(GateWay)
+admin.site.register(Payment)
+

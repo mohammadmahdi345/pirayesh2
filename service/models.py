@@ -4,13 +4,14 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db.models.signals import post_save, pre_save
 from django.dispatch import receiver
 from django.utils import timezone
+from datetime import time, timedelta
 
 from django.db import models
 from django.conf import settings
 
 # from service.tasks import send_post_notification
 
-
+# مدل ابسترکت
 class Time(models.Model):
     created_time = models.DateTimeField(auto_now_add=True,default=timezone.now)
     updated_time = models.DateTimeField(auto_now=True)
@@ -18,6 +19,7 @@ class Time(models.Model):
     class Meta:
         abstract = True
 
+# مدل مو
 class HairStyle(models.Model):
     name = models.CharField(max_length=50)
     description = models.CharField(max_length=750)
@@ -27,23 +29,11 @@ class HairStyle(models.Model):
     image = models.ImageField(upload_to='haircuts/')
 
 
-
-
-
-
     def __str__(self):
         return self.name
-
+# رزرو کاربران
 class Appointments(models.Model):
-    # FILE_AUDIO = 1
-    # FILE_VIDEO = 2
-    # FILE_PDF = 3
-    # FILE_TYPES = (
-    #     (FILE_AUDIO, _('audio')),
-    #     (FILE_VIDEO, _('video')),
 
-    #     (FILE_PDF, _('pdf'))
-    # )
 
     class Status(models.TextChoices):
         approved = 'approved', 'تایید شده'
@@ -55,8 +45,9 @@ class Appointments(models.Model):
     status = models.CharField(max_length=50, choices=Status.choices, default=Status.waiting)
     off = models.ForeignKey('Off', on_delete=models.PROTECT, blank=True, null=True)
     created_time = models.DateTimeField(auto_now_add=True)
-    updated_time = models.DateTimeField(auto_now=True)
-
+    date = models.DateField()
+    time_slot = models.ForeignKey('TimeSlot', on_delete=models.CASCADE)
+    notified_before_slot = models.BooleanField(default=False)
 
 
     def price(self):
@@ -68,7 +59,7 @@ class Appointments(models.Model):
 
     def __str__(self):
         return self.user.username
-
+# سیگنال زیر برای اینه که اگه کاربر سه رزرو ثبت شده داشته باشه یا مضرب 3 باشه واسه رزرو بعدی تخفیف میگیره
 @receiver(post_save, sender=Appointments)
 def check_discount_condition(sender, instance, created, **kwargs):
     if created or instance.status != Appointments.Status.approved:
@@ -86,6 +77,8 @@ def check_discount_condition(sender, instance, created, **kwargs):
 
 
 
+
+# مدیریت سالن
 class HallManagement(models.Model):
     name = models.CharField(max_length=30)
     info = models.TextField(max_length=5020)
@@ -96,7 +89,7 @@ class HallManagement(models.Model):
     closed = models.BooleanField(default=True)
     images = models.ManyToManyField('service.HallImage')
 
-
+#سیگنال های زیر برای اینن که اگه وضعیت سالن تغییر کرد تسک مربوط به ارسال نوتیف به کاربران اجرا شه
 @receiver(pre_save, sender=HallManagement)
 def cache_old_closed(sender, instance, **kwargs):
     if instance.pk:
@@ -113,16 +106,22 @@ def notify_on_hall_status_change(sender, instance, created, **kwargs):
             from .tasks import send_post_notification
             send_post_notification.delay()
 
-    # def __str__(self):
-    #     return
+# وقت های سالن
+class TimeSlot(models.Model):
+    start_time = models.TimeField()
+    end_time = models.TimeField()
+    is_booked = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f"{self.start_time} - {self.end_time} {'(رزرو شده)' if self.is_booked else ''}"
 
 
-
+# عکس های سالن
 class HallImage(models.Model):
     image = models.ImageField(upload_to='hall_images/')
     uploaded_at = models.DateTimeField(auto_now_add=True)
 
-
+# مدل تخفیف
 class Off(models.Model):
 
     code = models.CharField(max_length=10)
@@ -141,7 +140,7 @@ class Off(models.Model):
         return self.code
 
 
-
+# مدل برای نظر کاربران
 class Comment(models.Model):
     user = models.ForeignKey(to=settings.AUTH_USER_MODEL, on_delete=models.PROTECT, related_name='comments')
     description = models.TextField(max_length=1000, help_text='لطفا نظروانتقاد و پیشنهادات خود را بنویسید')

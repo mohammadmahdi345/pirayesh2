@@ -13,6 +13,6 @@ docker-compose.prod.yml
 
 # Environment Variables
 .env
-
+conftest
 # Python Virtual Environment
 venv/git add

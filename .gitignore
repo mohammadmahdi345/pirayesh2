@@ -7,9 +7,7 @@ __pycache__/
 # PyCharm
 .idea/
 
-# Docker
-Dockerfile
-docker-compose.prod.yml
+
 
 # Environment Variables
 .env

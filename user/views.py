@@ -1,5 +1,5 @@
 import requests
-from django.conf import settings
+from settings import base
 from .models import User
 from rest_framework.permissions import AllowAny
 from rest_framework.views import APIView
@@ -24,8 +24,8 @@ class CustomLoginView(APIView):
             "grant_type": "password",
             "username": username,
             "password": password,
-            "client_id": settings.OAUTH_CLIENT_ID,
-            "client_secret": settings.OAUTH_CLIENT_SECRET  # گرفتن client_secret از .env
+            "client_id": base.OAUTH_CLIENT_ID,
+            "client_secret": base.OAUTH_CLIENT_SECRET  # گرفتن client_secret از .env
         }
 
 
@@ -65,8 +65,8 @@ class RegisterView(APIView):
             "grant_type": "password",
             "username": username,
             "password": password,
-            "client_id": settings.OAUTH_CLIENT_ID,
-            "client_secret": settings.OAUTH_CLIENT_SECRET
+            "client_id": base.OAUTH_CLIENT_ID,
+            "client_secret": base.OAUTH_CLIENT_SECRET
         }
 
         token_url = "http://web:8005/o/token/"

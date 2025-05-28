@@ -93,6 +93,7 @@ class OffView(APIView):
                                     date=date, time_slot=time_slot)
                 return Response(serializer.data, status=status.HTTP_201_CREATED)
 
+
         # ثبت رزرو بدون تخفیف
         serializer.save(user=user, date=date, time_slot=time_slot,
                                                   status=Appointments.Status.waiting)
@@ -104,9 +105,12 @@ class OffView(APIView):
         serializer1 = AppointmentCreateSerializer(appo_approved)
         serializer2 = AppointmentCreateSerializer(appo)
 
-        return Response({'detail':f'your Appointments:',
-                         'approved_Appointment':serializer1.data,
-                         'other_Appointment':serializer2.data})
+        return Response({
+            'your_appointments': {
+                'approved_appointments': serializer1.data,
+            'other_appointments': serializer2.data
+                 }
+        })
 #________________________________________________________________________________________________________________________
 @extend_schema(summary="نشان دادن وقت های خالی")
 class AvailableTimeSlotsAPIView(APIView):

@@ -1,6 +1,6 @@
 import os
 from pathlib import Path
-# from decouple import config
+from decouple import config
 
 from django.conf.global_settings import MEDIA_ROOT, MEDIA_URL
 
@@ -140,6 +140,29 @@ REST_FRAMEWORK = {
     ),
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Your API',
+    'DESCRIPTION': 'API with OAuth2',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+    'SECURITY': [{'OAuth2': ['read', 'write']}],
+    'SECURITY_SCHEMES': {
+        'OAuth2': {
+            'type': 'oauth2',
+            'flows': {
+                'authorizationCode': {
+                    'authorizationUrl': 'http://localhost:8000/o/authorize/',
+                    'tokenUrl': 'http://localhost:8000/o/token/',
+                    'scopes': {
+                        'read': 'Read scope',
+                        'write': 'Write scope',
+                    },
+                }
+            },
+        },
+    },
 }
 
 

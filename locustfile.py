@@ -1,7 +1,9 @@
 
 import random
 
+from django.conf import settings
 from locust import HttpUser, task, between
+from settings import base
 import json
 
 
@@ -35,8 +37,8 @@ class OffViewUser(HttpUser):
             "grant_type": "password",
             "username": username,
             "password": password,
-            "client_id": "UwawV9d5vmuKjyR1aMGOiSeSsz56JDjrxTBOLla4",
-            "client_secret": "J3b2d6z8mXziHxf5qm2eOhCb2OcwXH60P3GVbaY2XYOpfA1vGt3S2EKL1CsvA9wKg2cb4jujAsyJk2BUWV7XHr8CVUkPsFbyuPTGQNUzyvGdTpFLvVcSuZAhZsRWUYCM",
+            "client_id": base.OAUTH_CLIENT_ID,
+            "client_secret": base.OAUTH_CLIENT_SECRET,
         }
         response = self.client.post(url, data=data)
         print("Token response:", response.status_code, response.text)

@@ -7,10 +7,19 @@ __pycache__/
 # PyCharm
 .idea/
 
+nginx
 
+
+debug.log
+django_errors.log
+k
+main.py
+pytest.ini
+test.py
 
 # Environment Variables
 .env
-conftest
+conftest.py
+.env.dev
 # Python Virtual Environment
 venv/git add

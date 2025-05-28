@@ -55,17 +55,11 @@
 ### اجرای پروژه در محیط توسعه (با Docker Compose)
 
 ```bash
-docker-compose -f docker-compose.dev.yml up -d برای اجرای کانتینرها
+docker-compose -f docker-compose.dev.yml up -d --build برای اجرای کانتینرها
 docker-compose -f docker-compose.dev.yml down برای توقف کانتینرها
 docker-compose -f docker-compose.dev.yml exec web pytest   اجرای تست ها با پایتست
 locust -f locustfile.py اجرای تست عملکردی سیستم با 
-و
-3. نصب وابستگی‌ها:
 
-
-```bash
-    pip install -r re.txt
-    ```
 - 📚 مستندات API
 
 مستندات کامل و تعاملی API از طریق Swagger UI در دسترس است:

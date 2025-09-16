@@ -23,3 +23,5 @@ conftest.py
 .env.dev
 # Python Virtual Environment
 venv/git add
+
+node_modules

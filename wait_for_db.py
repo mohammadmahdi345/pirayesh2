@@ -17,22 +17,22 @@
 #         time.sleep(2)
 import time
 import MySQLdb
-
-DB_HOST = "db"  # اینجا باید اسم سرویس db که در docker-compose تعریف کرده‌ای وارد بشه
-DB_USER = "dev_user"
-DB_PASSWORD = "dev_mmd1234"
-DB_NAME = "dev_db"
-
-while True:
-    try:
-        connection = MySQLdb.connect(
-            host=DB_HOST,
-            user=DB_USER,
-            password=DB_PASSWORD,
-            db=DB_NAME
-        )
-        connection.close()
-        break
-    except MySQLdb.OperationalError:
-        print("Database is not ready yet, retrying in 5 seconds...")
-        time.sleep(5)
+#
+# DB_HOST = "db"  # اینجا باید اسم سرویس db که در docker-compose تعریف کرده‌ای وارد بشه
+# DB_USER = "dev_user"
+# DB_PASSWORD = "dev_mmd1234"
+# DB_NAME = "dev_db"
+#
+# while True:
+#     try:
+#         connection = MySQLdb.connect(
+#             host=DB_HOST,
+#             user=DB_USER,
+#             password=DB_PASSWORD,
+#             db=DB_NAME
+#         )
+#         connection.close()
+#         break
+#     except MySQLdb.OperationalError:
+#         print("Database is not ready yet, retrying in 5 seconds...")
+#         time.sleep(5)

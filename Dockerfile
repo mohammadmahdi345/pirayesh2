@@ -19,7 +19,7 @@ ADD r.txt .
 
 RUN pip install --upgrade pip && pip install -r r.txt
 
-RUN python manage.py collectstatic --noinput || true
+# RUN python manage.py collectstatic --noinput || true
 
 # CMD ["gunicorn", "pirayesh.wsgi:application", "--bind", "0.0.0.0:8005", "--reload"]
 CMD python manage.py runserver 0.0.0.0:8005

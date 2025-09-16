@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>offs</title>
+  <style>
+    * {
+      direction: rtl;
+      background-color: black;
+      color: white;
+      box-sizing: border-box;
+    }
+
+  
+    #off {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: visible; /* موج بیرون نیفته */
+    text-align: center;
+  }
+      
+    h1 {
+      font-size: 40px;
+      margin-top: 100px;
+      padding-bottom: 50px;
+    }
+    #salam {
+      position: relative;
+      border-radius: 5px;
+      border: solid 5px white;
+      padding: 20px;
+      margin-top: 20px;
+    }
+    button {
+      color: #63560A;
+      border-radius: 5px;
+      cursor: pointer;
+      position: absolute;
+      width:min-content;
+      bottom: 3px;
+      right: 100px;
+      left: 0px;
+      
+    }
+    button:hover {
+      background-color: blue;
+    }
+    .wave {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px; /* ارتفاع کمتر موج */
+    overflow: hidden;
+    z-index: 1;
+  }
+  .wave svg {
+    width: 100%;
+    height: 80px;
+    display: inline-block;
+  }
+  </style>
+</head>
+<body>
+  <div id="off">
+    <h1>کد های تخفیف</h1>
+    <b>توضیحاتی راجب نحوه استفاده:</b>
+    <div id="salam">
+      <p>توضیحات تستی برای استفاده از کد تخفیف<br>لطفا به شرایط دقت کنید</p>
+      <button id='tower' type="button">استفاده</button>
+    </div>
+  </div>
+
+  <section class="hero">
+    <div class="wave">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none">
+        <path fill="#e7008a" fill-opacity="1" d="M0,64L8.3,64C16.6,64,33,64,50,90.7C66.2,117,83,171,99,197.3C115.9,224,132,224,149,234.7C165.5,245,182,267,199,245.3C215.2,224,232,160,248,122.7C264.8,85,281,75,298,85.3C314.5,96,331,128,348,165.3C364.1,203,381,245,397,224C413.8,203,430,117,447,85.3C463.4,53,480,75,497,106.7C513.1,139,530,181,546,213.3C562.8,245,579,267,596,272C612.4,277,629,267,646,272C662.1,277,679,299,695,304C711.7,309,728,299,745,277.3C761.4,256,778,224,794,208C811,192,828,192,844,192C860.7,192,877,192,894,192C910.3,192,927,192,943,165.3C960,139,977,85,993,74.7C1009.7,64,1026,96,1043,144C1059.3,192,1076,256,1092,256C1109,256,1126,192,1142,144C1158.6,96,1175,64,1192,80C1208.3,96,1225,160,1241,186.7C1257.9,213,1274,203,1291,170.7C1307.6,139,1324,85,1341,96C1357.2,107,1374,181,1390,208C1406.9,235,1423,213,1432,202.7L1440,192L1440,0L0,0Z"></path>
+      </svg>
+    </div>
+  </section>
+
+  <script>
+
+
+    const button = document.getElementById('tower');
+
+    button.addEventListener('click', function(e){
+      console.log(e);
+    });
+
+    class Animal{
+      constructor(fname, lname){
+        this.firstname = fname;
+        this.lastname = lname;
+    }
+
+    eat(){
+      console.log(`hi my name is ${this.firstname} and my last name is ${this.lastname} and i eating`)
+    }
+
+    }
+
+
+    class Dog extends Animal{
+      constructor(fname, lname, age){
+        super(fname, lname);
+        this.age = age;
+      }
+      mew(){
+        console.log('im mewinggg...')
+      }
+    }
+
+    let dog = new Dog('mahmud', 'faraz', 2);
+
+    //dog.eat()
+    //dog.mew()
+    //console.log(dog.age)
+
+    class Bear extends Animal{
+      constructor(firstname, lastname, style){
+        super(firstname, lastname);
+        this.style = style;
+      }
+
+      strong(){
+        console.log(`am i to strong as a ${this.firstname}?`)
+      }
+    }
+
+    //let bear = new Bear('bear', 'mahmudi', 'panghe');
+    //console.log(bear.lastname);
+    //bear.strong();
+
+    class Car{
+      constructor(name, speed, color){
+        this.name = name;
+        this.speed = speed;
+        this.color = color;
+      }
+
+      driving(){
+        console.log(`my car name is ${this.name} and i driving`)
+      }
+    }
+
+
+    class Toyota extends Car{
+      constructor(name, speed, color, size){
+        super(name, speed, color);
+        this.size = size;
+      }
+
+      accident(){
+        console.log(`i got an accident with ${this.name} and the speed of ${this.speed}`)
+      }
+
+    }
+
+    let toyota = new Toyota('toyota', 120, 'red', 'big');
+
+    toyota.accident();
+    toyota.driving();
+
+
+
+
+  </script>
+</body>
+</html>

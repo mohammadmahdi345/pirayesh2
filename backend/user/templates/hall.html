@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HallManagement</title>
+    <style>
+        * {
+            direction : rtl;
+        }
+
+        #hall {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: 'Vazirmatn', sans-serif;
+            text-align : center;
+        }
+
+
+        h1 {
+            font-size : 60px;
+            color : red;
+            border : dashed 5px purple;
+            padding : 10px;
+        }
+
+        h1:hover {
+            color : blue;
+        }
+
+        #hall2 {
+            border-radius: 10px; /* مقدار قبلی اشتباه بود */
+            border: solid 5px purple;
+            width: 300px;
+            padding-right: 10px;
+            display: inline-block; /* بهتر از inline برای بلاک‌های این‌چنینی */
+            height: auto;
+            direction: rtl;
+            text-align: right;
+        }
+
+        .grid-container {
+          display: grid;
+          grid-template-columns: 1fr 2fr 1fr; /* دو ستون، دومی دو برابر اولی */
+          grid-auto-rows: 400px;
+           /* فاصله بین خانه‌ها */
+          gap: 20px;
+          /* row-gap: 200px;*/
+          /* column-gap: 20px; */
+          margin-top : 50px;
+                    }
+        .item {
+          background: lightblue;
+          /* padding: 120px; */
+          text-align: center;
+        }
+        .item{
+          width: 100%;
+          height : 100%;
+          display: block;
+        }
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+    <div id="hall">
+        <h1>سالن پیرایش حمید</h1>
+        <div id="hall2">
+            <p><strong>معرفی</strong> : این سالن زیبایی بسیار ارزان و با کیفیت است و اماده انجام دادن هر گونه مدلی</p>
+            <p><strong>آدرس</strong> : شهریاروشهرک کمیتهو خیابان طوقانی</p>
+            <p><strong>شماره تلفن</strong> : 09334370961</p>
+            <p><strong>زمان باز شدن</strong> : ساعت 9 صبح</p>
+            <p><strong>زمان بسته شدن</strong> : ساعت 9 شب</p>
+        </div>
+        <div class="grid-container">
+            <img class="item" src="https://via.placeholder.com/300x400" alt="sample">
+            <img class="item" src="ScreenShot-2024-12-28_12-20-41.png" width="300" alt="mahmud error">
+            <img class="item" src="ScreenShot-2024-12-28_12-20-41.png" width="300" alt="mahmud error">
+        </div>
+    </div>
+    <script>
+        let age;
+        age = 18;
+        age = 19;
+        console.log(age);
+        const name = 'mahmud';
+        console.log(name);
+        // aray
+        let names = ['ali','faraz','heydar'];
+        names[1] = 'koli';
+        console.log(names[1]);
+        // object
+        const human = {
+            name : 'hasan',
+            age : 12,
+            gender : 'man',
+            address : {
+                country : 'iran',
+                city : 'tehran'
+            },
+            hobbies : ['read manhwa',  'play games', 'codding']
+        }
+        human.hobbies[1] = 'fuck';
+        console.log(human.hobbies[1]);
+        // function
+        function mahmud(number) {
+            return number * number
+        }
+        const wow = mahmud(2)
+        console.log(wow);
+        //..............
+        let ali = 'shomali';
+        result = ali.length;
+
+        console.log(result);
+
+        let ahmad = 'zangan';
+        result = ali.toUpperCase();
+
+        console.log(result);
+
+        let number = 7;
+        const num = 10;
+
+        if(number < 10){
+            console.log('salam');
+        }
+        else if(number == 7 && num ==10){
+            console.log('yaaaaaa')
+        }
+        else {
+            console.log('yaallah');
+        }
+        try {
+            let result;
+            result = 5 + 2;
+            console.log(sum);
+        }
+        catch(e){
+            console.log('wrong'+' '+ e);
+        }
+        let i = 0
+
+        while(i < 10){
+            if(i % 2 !== 0){
+                console.log(i);
+            }
+            i++;
+        }
+        let numbers = [1,3,6,7,8];
+
+        for(let i=0; i<numbers.length;i++){
+            if(numbers[i] == 7){
+                console.log(numbers.indexOf(7));
+            }
+        }
+
+        let mahdies = [1,2,3,45,6];
+
+        for(let alii of mahdies){
+            if(alii == 2){
+            console.log(`${alii} found!!`);
+            }
+        }
+
+        let feodal = {
+            name: 'mahmud'
+        };
+        for(let faraz in feodal){
+            console.log(`${faraz}: ${feodal[faraz]}`);
+        }
+
+    </script>
+</body>
+</html>

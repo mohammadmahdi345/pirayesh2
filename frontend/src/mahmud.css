@@ -1,0 +1,127 @@
+/* کانتینر کلی */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1f1c2c, #928dab);
+  perspective: 1200px; /* برای افکت 3D */
+  padding: 20px;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* فرم */
+.login-box {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  padding: 40px 30px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 15px 25px rgba(0,0,0,0.5);
+  border: 1px solid rgba(255,255,255,0.2);
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+/* افکت حرکت فرم با موس یا لمس */
+.login-box:hover {
+  transform: rotateY(8deg) rotateX(3deg) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+}
+
+.login-box h2 {
+  text-align: center;
+  color: #fff;
+  margin-bottom: 30px;
+  font-size: 2rem;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+}
+
+/* خطا */
+.error {
+  background: rgba(255,0,0,0.2);
+  color: #fff;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 20px;
+  font-size: 0.9rem;
+}
+
+/* فرم کلاس */
+.form-class {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.form-class label {
+  color: #fff;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+.form-class input {
+  padding: 12px 15px;
+  border-radius: 12px;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  background: rgba(255,255,255,0.2);
+  color: #fff;
+  box-shadow: inset 2px 2px 5px rgba(0,0,0,0.3);
+  transition: all 0.3s ease;
+}
+
+.form-class input:focus {
+  background: rgba(255,255,255,0.3);
+  box-shadow: 0 0 10px rgba(255,255,255,0.4);
+  transform: translateZ(5px);
+}
+
+/* دکمه ورود */
+.login {
+  width: 100%;
+  padding: 12px 0;
+  border: none;
+  border-radius: 15px;
+  background: linear-gradient(145deg, #ff4e50, #f9d423);
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+  transition: all 0.3s ease;
+  transform-style: preserve-3d;
+}
+
+.login:hover {
+  transform: translateY(-5px) translateZ(10px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.5);
+}
+
+.login:active {
+  transform: translateY(0) translateZ(0);
+  box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+}
+
+/* واکنش‌گرایی موبایل */
+@media (max-width: 768px) {
+  .login-box {
+    padding: 25px 15px;
+    border-radius: 15px;
+  }
+
+  .login-box h2 {
+    font-size: 1.5rem;
+  }
+
+  .form-class input {
+    font-size: 1rem;
+  }
+
+  .login {
+    font-size: 1rem;
+  }
+}

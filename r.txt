@@ -25,3 +25,4 @@ gunicorn==20.1.0
 locust
 python-decouple
 drf-spectacular
+watchdog

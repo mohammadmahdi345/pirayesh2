@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+  font-size : 50PX;
+  font-family: "Tahoma", sans-serif;
+  background-color: #f0f2f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  direction: rtl;
+}
+
+/* جعبه فرم ثبت نام */
+.signup_container {
+  background-color: white;
+  padding: 30px 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  width: 320px;
+  text-align: center;
+}
+
+.signup_container h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* گروه ورودی */
+.form_group {
+  margin-bottom: 20px;
+  text-align: right;
+}
+
+label {
+  display: block;
+  margin-bottom: 6px;
+  color: #444;
+  font-size: 14px;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 16px;
+  font-size: 15px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+#message {
+  margin-top: 15px;
+  font-size: 14px;
+}
+    </style>
+    <meta charset="UTF-8">
+    <title>register</title>
+</head>
+<body>
+    <div class="signup_container">
+        <h2>ثبت نام</h2>
+        <form id="registerform">
+            <div class="form_group">
+                <label for="username">نام کاربری</label>
+                <input type=text id="username" name="username" placeholder="نام کاربری">
+            </div>
+            <div class="form_group">
+                <label for="password">رمز عبور</label>
+                <input type=password id="password" name="password" placeholder="رمز عبور">
+            </div>
+            <button type="button" id="submitBtn">ثبت نام</button>
+        </form>
+        <p id="message"></p>
+    </div>
+
+    <!-- ✅ JavaScript -->
+    <script>
+    const button = document.getElementById("submitBtn");
+
+    button.addEventListener("click", function () {
+      const usernameVal = document.getElementById("username").value;
+      const passwordVal = document.getElementById("password").value;
+
+      const data = new URLSearchParams();
+      data.append("username", usernameVal);
+      data.append("password", passwordVal);
+
+      fetch("http://localhost:8005/register/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: data.toString()
+      })
+      .then(response => response.json().then(data => ({ status: response.status, body: data })))
+      .then(({ status, body }) => {
+        console.log("Result:", body);  // 🔍 نمایش در DevTools
+        if (status === 201) {
+          localStorage.setItem("access_token", body.tokens.access_token);
+          message.textContent = "ثبت‌نام و ورود موفق!";
+          message.style.color = "green";
+        } else {
+          message.textContent = body.message || body.error || "خطا در ثبت‌نام.";
+          message.style.color = "red";
+        }
+      })
+      .catch(error => {
+        console.error("Network error:", error);
+        message.textContent = "خطا در ارتباط با سرور.";
+        message.style.color = "orange";
+      });
+    });
+    </script>
+</body>
+</html>
+

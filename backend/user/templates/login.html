@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>login</title>
+<style>
+  body {
+    font-family: "Tahoma", sans-serif;
+    background-color: red;
+    margin: 0;
+    direction: rtl;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+  }
+
+
+  #welcome {
+    font-size: 40px;
+    margin-top: 160px;
+    padding-bottom: 30px;
+    color: white;
+    text-align: center;
+  }
+
+  .login_container {
+    background-color: white;
+    padding: 30px 40px;
+    border-radius: 12px;
+    font-size: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    width: 320px;
+  }
+
+  .login_container h2 {
+    text-align: center;
+    margin-top: 0;
+    
+  }
+
+  .form_group {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 6px;
+    color: #443;
+    font-size: 14px;
+  }
+
+  input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid purple;
+    border-radius: 6px;
+    font-size: 14px;
+    box-sizing: border-box;
+    cursor: pointer;
+  }
+  input[type="text"], input[type="password"]:focus {
+    font-weight : bold;
+  }
+  button {
+    background-color: #4CAF50;
+    padding: 10px 26px;
+    font-size: 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease;
+  }
+
+  button:active {
+    background-color: #45a049;
+    background-image : url(ScreenShot-2024-12-28_12-20-41.png);
+  }
+
+  #mahmud {
+    margin-top: 40px;
+    font-size: 15px;
+    text-decoration : none;
+    color : white;
+
+  }
+
+  button::before {
+    content: "🚀 ";
+  }
+</style>
+
+</head>
+<body>
+  <h1 id="welcome">به سایت من خوش آمدید</h1>
+  <div class="login_container">
+    <h2>ورود</h2>
+    <form id="loginform">
+      <div class="form_group">
+        <label for="username">نام کاربری</label>
+        <input type="text" id="username" name="username">
+      </div>
+      <div class="form_group">
+        <label for="password">رمز عبور</label>
+        <input type="password" id="password" name="password">
+      </div>
+      <button type="button" id="submitBtn">ورود</button>
+    </form>
+<!--    <p id="message"></p>-->
+  </div>
+  <a id=mahmud href="#wow">درباره ما</a>
+
+
+<!--  <script>-->
+<!--    const username = document.getElementById("username");-->
+<!--    const password = document.getElementById("password");-->
+<!--    const message = document.getElementById("message");-->
+<!--    const button = document.getElementById("submitBtn");-->
+
+<!--    button.addEventListener("click", function () {-->
+<!--      const data = new URLSearchParams();-->
+<!--      data.append("username", username.value);-->
+<!--      data.append("password", password.value);-->
+
+<!--      fetch("http://localhost:8005/login/", {-->
+<!--        method: "POST",-->
+<!--        headers: {-->
+<!--          "Content-Type": "application/x-www-form-urlencoded"-->
+<!--        },-->
+<!--        body: data.toString()-->
+<!--      })-->
+<!--      .then(response => response.json().then(body => ({ status: response.status, body })))-->
+<!--      .then(({ status, body }) => {-->
+<!--        if (status === 200 && body.tokens?.access_token) {-->
+<!--          localStorage.setItem("access_token", body.tokens.access_token);-->
+<!--          message.textContent = "ورود موفق!";-->
+<!--          message.style.color = "green";-->
+<!--        } else {-->
+<!--          message.textContent = body.error || "نام کاربری یا رمز عبور اشتباه است.";-->
+<!--          message.style.color = "red";-->
+<!--        }-->
+<!--      })-->
+<!--      .catch(error => {-->
+<!--        console.error("Error:", error);-->
+<!--        message.textContent = "خطا در ارتباط با سرور.";-->
+<!--        message.style.color = "orange";-->
+<!--      });-->
+<!--    });-->
+<!--  </script>-->
+</body>
+</html>

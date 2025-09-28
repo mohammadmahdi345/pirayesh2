@@ -20,29 +20,50 @@ const CommentStats = () => {
     }, []);
 
     return (
-        <div>
-            <h2>Comments</h2>
-            {comments.map((s) => (
-                <div key={s.user_id} style={{ marginBottom: "20px", borderBottom: "1px solid gray" }}>
-                    <h3>👤 {s.username}</h3>
-                    <p>⭐ میانگین امتیاز: {s.avarage_point}</p>
+        <div className="admin-stats-page">
+            <header className="stats-header">
+            <h2 className="stats-title">👥 امتیازات و نظرات کاربران</h2>
+            </header>
 
-                    <h4>نظرات:</h4>
-                    <ul>
-                        {s.comments.map((c, i) => (
-                            <li key={i}>
-                                <p>{c.comment}</p>
-                                <small>
-                                    امتیاز: {c.point} - تاریخ: {new Date(c.created_at).toLocaleString()}
-                                </small>
-                            </li>
-                        ))}
-                    </ul>
+            <section className="stats-grid">
+            {comments.map((s) => (
+                <article key={s.user_id} className="stats-card">
+                <div className="user-card">
+                    <div className="user-avatar" aria-hidden="true">
+                    {s.username?.charAt(0)?.toUpperCase()}
+                    </div>
+                    <div className="user-info">
+                    <h3 className="user-name">{s.username}</h3>
+                    <div className="user-average">⭐ {s.avarage_point}</div>
+                    </div>
                 </div>
+
+                <div className="user-comments">
+                    {s.comments.map((c, i) => (
+                    <div key={i} className="comment-item">
+                        <p className="comment-text">{c.comment}</p>
+                        <div className="comment-meta">
+                        <span className="meta-point">
+                            امتیاز: <strong>{c.point}</strong>
+                        </span>
+                        <span className="meta-date">
+                            {new Date(c.created_at).toLocaleString()}
+                        </span>
+                        </div>
+                    </div>
+                    ))}
+                </div>
+                </article>
             ))}
-            <h1>{message}</h1>
+            </section>
+
+            <footer className="status-line">
+            {message && <div className="muted-msg">{message}</div>}
+            </footer>
         </div>
-    );
+        );
+
+
 };
 
 export default CommentStats;

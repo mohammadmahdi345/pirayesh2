@@ -4,12 +4,20 @@ from user.serializers import UserSerializer
 
 from .models import *
 
+class CategorySerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Category
+        fields = '__all__'
+
 class HairStylesSerializer(serializers.ModelSerializer):
     """سریالایزر برای مدل مو"""
 
+    category = CategorySerializer()
+
     class Meta:
         model = HairStyle
-        fields = ['pk', 'name', 'price']
+        fields = ['pk', 'name', 'description', 'price','image','time_excepted','category']
 
 
 # class AppointmentsSerializer(serializers.ModelSerializer):
@@ -99,11 +107,28 @@ class AppointmentCreateSerializer(serializers.ModelSerializer):
         return None
 
 
+class HallImageSerializer(serializers.ModelSerializer):
+    image = serializers.SerializerMethodField()
+
+    class Meta:
+        model = HallImage
+        fields = ['id', 'image']
+
+    def get_image(self, obj):
+        request = self.context.get('request', None)
+        if request:
+            return request.build_absolute_uri(obj.image.url)
+        return obj.image.url
+
+
 class HallManagementSerializer(serializers.ModelSerializer):
+    images = HallImageSerializer(many=True, read_only=True)
 
     class Meta:
         model = HallManagement
         fields = '__all__'
+
+
 
 
 class CommentSerializer(serializers.ModelSerializer):
@@ -127,3 +152,26 @@ class TimeslotSerializer(serializers.ModelSerializer):
     class Meta:
         model = TimeSlot
         fields = '__all__'
+
+
+class AppointmentCancelSerializer(serializers.ModelSerializer):
+    user = UserSerializer(read_only=True)
+    time_slot = TimeslotSerializer(read_only=True)
+    hairstyle_name = serializers.CharField(source='hairstyle.name', read_only=True)
+    status = serializers.CharField(read_only=True)
+
+    class Meta:
+        model = Appointments
+        fields = ['pk', 'user', 'hairstyle_name', 'date', 'time_slot', 'status']
+
+
+
+class AppointmentSerializer(serializers.ModelSerializer):
+    user = UserSerializer(read_only=True)
+    hairstyle = HairStylesSerializer(read_only=True)   # nested hairstyle
+    time_slot = TimeslotSerializer(read_only=True)      # nested time slot
+   
+    class Meta:
+        model = Appointments
+        fields = ['pk', 'user', 'hairstyle', 'status', 'date', 'time_slot', 'created_time']
+

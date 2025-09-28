@@ -12,6 +12,15 @@ from django.conf import settings
 # from service.tasks import send_post_notification
 
 # مدل ابسترکت
+
+class Category(models.Model):
+    name = models.CharField(max_length=50)
+    created_time = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name
+
+
 class Time(models.Model):
     created_time = models.DateTimeField(auto_now_add=True,default=timezone.now)
     updated_time = models.DateTimeField(auto_now=True)
@@ -23,6 +32,7 @@ class Time(models.Model):
 class HairStyle(models.Model):
     name = models.CharField(max_length=50)
     description = models.CharField(max_length=750)
+    category = models.ForeignKey('Category', on_delete=models.PROTECT, related_name='categories', blank=True, null=True)
     time_excepted = models.DurationField()
     price = models.DecimalField(max_digits=8, decimal_places=2)
     off = models.ForeignKey('Off', on_delete=models.PROTECT, blank=True, null=True)

@@ -18,5 +18,6 @@ admin.site.register(HallManagement)
 admin.site.register(HallImage)
 admin.site.register(Off)
 admin.site.register(TimeSlot)
+admin.site.register(Category)
 
 

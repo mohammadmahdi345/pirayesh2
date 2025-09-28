@@ -20,24 +20,32 @@ const CommentAllStats = () => {
     }, []);
 
     return (
-        <div>
-            <h2>📊 آمار کلی نظرات</h2>
-            <p>⭐ میانگین کلی امتیازات: <b>{data.average_point}</b></p>
+        <div className="admin-stats-page">
+            <header className="stats-header">
+            <h2 className="stats-title">📊 آمار کلی نظرات</h2>
+            <div className="avg-badge">⭐ میانگین: <span className="avg-value">{data.average_point}</span></div>
+            </header>
 
-            <h3>💬 همه‌ی نظرات:</h3>
-            <ul>
+            <section className="stats-body">
+            <div className="all-comments-card">
+                <h3 className="card-title">💬 همه‌ی نظرات</h3>
+                <ul className="all-comments-list">
                 {data.comments.map((c) => (
-                    <li key={c.id} style={{ marginBottom: "15px", borderBottom: "1px solid #ccc" }}>
-                        <p>{c.description}</p>
-                        <small>
-                            امتیاز: {c.point} | کاربر: {c.user} | تاریخ:{" "}
-                            {new Date(c.created_at).toLocaleString()}
-                        </small>
+                    <li key={c.id} className="comment-row">
+                    <div className="comment-main">
+                        <p className="comment-text">{c.description}</p>
+                        <div className="comment-meta">
+                        <span className="meta-point">امتیاز: <strong>{c.point}</strong></span>
+                        <span className="meta-user">کاربر: <strong>{c.user}</strong></span>
+                        <span className="meta-date">{new Date(c.created_at).toLocaleString()}</span>
+                        </div>
+                    </div>
                     </li>
                 ))}
-            </ul>
-
-            <h4>{message}</h4>
+                </ul>
+                <div className="card-footer">{message && <div className="muted-msg">{message}</div>}</div>
+            </div>
+            </section>
         </div>
     );
 };

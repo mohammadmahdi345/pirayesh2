@@ -64,7 +64,7 @@ class AllAppointmentView(APIView):
 
     def get(self,request):
         appo = Appointments.objects.all()
-        serializer = AppointmentCreateSerializer(appo,many=True)
+        serializer = AppointmentSerializer(appo,many=True)
         return Response(serializer.data,status=200)
 
 class OneAppointmentView(APIView):
@@ -75,7 +75,7 @@ class OneAppointmentView(APIView):
             appo = Appointments.objects.filter(user=request.user,status='waiting')
         except Appointments.DoesNotExist:
             return Response(status=404)
-        serializer = AppointmentCreateSerializer(appo,many=True)
+        serializer = AppointmentCancelSerializer(appo,many=True)
         return Response(serializer.data,status=200)
 
 @extend_schema(
@@ -183,12 +183,16 @@ class AvailableTimeSlotsAPIView(APIView):
 
 @extend_schema(summary="مدیریت سالن")
 class HallManagementView(APIView):
-    
 
     def get(self, request):
         hall = HallManagement.objects.first()
-        serializer = HallManagementSerializer(hall)
-        return Response(serializer.data, status=status.HTTP_200_OK)
+        if not hall:
+            return Response({"detail": "هیچ سالن موجود نیست"}, status=404)
+        
+        serializer = HallManagementSerializer(hall, context={"request": request})
+        return Response(serializer.data, status=200)
+
+
 
         
 @extend_schema(summary="سرچ بین مدل موها")

@@ -17,33 +17,36 @@ class CustomLoginView(APIView):
     permission_classes = [AllowAny]
 
     def post(self, request):
-        username = request.data.get("username")
-        password = request.data.get("password")
+        username = request.data.get('username')
+        password = request.data.get('password')
 
         if not username or not password:
             return Response({"error": "Username and password required"}, status=400)
 
         data = {
-            "grant_type": "password",
-            "username": username,
-            "password": password,
+            'grant_type': 'password',
+            'username': username,
+            'password': password,
             "client_id": base.OAUTH_CLIENT_ID,
             "client_secret": base.OAUTH_CLIENT_SECRET
         }
 
-
-        token_url = "http://localhost:8005/o/token/"
+        token_url = 'http://localhost:8005/o/token/'
         response = requests.post(token_url, data=data)
 
 
+        logger.debug(f"Token response: {response.status_code=} {response.text=}")
+
         if response.status_code != 200:
-            logger.debug(f"wowwwwwwwwww: {base.OAUTH_CLIENT_ID=} {base.OAUTH_CLIENT_SECRET=} {username=} {password=}")
-            return Response(response.json(), status=response.status_code)
+            return Response({
+                "message": "نام کاربری یا رمز عبور صحیح نمی‌باشد",
+                "token_error": response.json()
+            }, status=400)
 
         return Response({
-            "message": "Login successful",
+            "message": "logged in successfully.",
             "tokens": response.json()
-        }, status=200)
+        }, status=201)
 
 
 
@@ -64,10 +67,10 @@ class RegisterView(APIView):
         email = request.data.get("email", "")
 
         if not username or not password:
-            return Response({"error": "Username and password required"}, status=400)
+            return Response({"error": "نام کاربری و رمز عبور نیاز است"}, status=400)
 
         if User.objects.filter(username=username).exists():
-            return Response({"error": "Username already exists"}, status=400)
+            return Response({"error": "نام کاربری از قبل موجود است"}, status=400)
 
         user = User.objects.create_user(
             username=username,

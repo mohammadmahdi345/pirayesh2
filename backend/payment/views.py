@@ -42,13 +42,15 @@ class PaymentView(APIView):
             ref_id=str(uuid.uuid4())
         )
 
-        is_paid = random.choice([True,False])
+        #is_paid = random.choice([True,False])
+
+        is_paid = True
 
         if is_paid:
             payment.is_paid = True
             payment.save()
             return Response({
-                'detail':'payment is succesful',
+                'detail':'پرداخت به درستی انجام شد',
                 'user': payment.user.username,
                 'paid_at': payment.paid_at,
                 'ref_id': payment.ref_id,
@@ -56,7 +58,7 @@ class PaymentView(APIView):
             }, status=201)
         else:
             return Response({
-                'detail': 'payment is unsuccesful',
+                'detail': 'پرداخت به مشکل خورد',
                 'user': payment.user.username,
                 'ref_id': payment.ref_id,
                 'pk': pk,

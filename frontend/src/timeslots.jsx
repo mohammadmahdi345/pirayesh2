@@ -1,15 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import axios from "axios";
 
+
 const TimeSlots = () => {
-  const [date, setDate] = useState(""); // تاریخ انتخابی
+  const [date, setDate] = useState("");
   const [slots, setSlots] = useState([]);
   const [error, setError] = useState("");
 
   const fetchSlots = async (selectedDate) => {
     try {
       const response = await axios.get("http://localhost:8005/timeslots/", {
-        params: { date: selectedDate } // ← اینجا query params میره
+        params: { date: selectedDate },
       });
       setSlots(response.data);
       setError("");
@@ -29,18 +30,39 @@ const TimeSlots = () => {
   };
 
   return (
-    <div>
-      <h2>تایم‌اسلات‌ها</h2>
-      <input type="date" value={date} onChange={handleDateChange} />
-      {error && <p style={{ color: "red" }}>{error}</p>}
-
-      <ul>
-        {slots.map((slot) => (
-          <li key={slot.id}>
-            {slot.start_time} - {slot.end_time}
-          </li>
+    <div className="timeslots-root">
+      {/* بک‌گراند زنده */}
+      <div className="bg-container">
+        {[...Array(80)].map((_, i) => (
+          <div key={i} className="circle-container">
+            <div className="circle"></div>
+          </div>
         ))}
-      </ul>
+      </div>
+
+      {/* محتوای اصلی */}
+      <div className="timeslots-panel">
+        <h2 className="timeslots-title">تایم‌های خالی سالن</h2>
+        <input
+          type="date"
+          value={date}
+          onChange={handleDateChange}
+          className="date-input"
+        />
+
+        {error && <p className="error-msg">{error}</p>}
+
+        <ul className="slots-list">
+          {slots.length === 0 && date && <li>تایمی موجود نیست</li>}
+          {slots.map((slot) => (
+            <li key={slot.id} className="slot-card">
+              <span>
+                {slot.start_time} - {slot.end_time}
+              </span>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };

@@ -1,110 +1,144 @@
-import React, { Component } from "react";
-import * as yup from "yup";
+import React, { useState, useRef } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
-class Login extends Component {
-  state = {
-    account: {
-      username: "",
-      password: ""
-    },
-    errors: [],
-    sending: false
-  };
 
-  handelchange = (e) => {
-    const input = e.currentTarget;
-    const account = { ...this.state.account };
-    account[input.name] = input.value;
-    this.setState({ account });
-  };
+const LoginForm = () => {
+  const [account, setAccount] = useState({ username: "", password: "" });
+  const [errors, setErrors] = useState([]); // آرایه خطاها (نمایش)
+  const [status, setStatus] = useState("idle"); // idle | sending | success | error
+  const navigate = useNavigate();
+  const btnRef = useRef(null);
 
-  schema = yup.object().shape({
-    username: yup.string().required("پر کردن این فیلد الزامی است"),
-    password: yup
-      .string()
-      .min(5, "رمز عبور حداقل باید 5 حرف داشته باشد")
-      .required("پر کردن این فیلد الزامی است")
-  });
-
-  validate = async () => {
-    try {
-      const result = await this.schema.validate(this.state.account, {
-        abortEarly: false
-      });
-      return result;
-    } catch (error) {
-      this.setState({ errors: error.errors });
+  const validate = () => {
+    const errs = [];
+    if (!account.username || account.username.trim() === "") {
+      errs.push("لطفاً نام کاربری را وارد کنید");
     }
+    if (!account.password || account.password.length < 5) {
+      errs.push("رمز عبور حداقل باید ۵ کاراکتر باشد");
+    }
+    setErrors(errs);
+    return errs.length === 0;
   };
 
-  handelsubmit = async (e) => {
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setAccount((s) => ({ ...s, [name]: value }));
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const result = await this.validate();
-    if (result) {
-      try {
-        this.setState({ sending: true });
-        const response = await axios.post("http://localhost:8005/login/", result);
-        localStorage.setItem("token", response.data.tokens.access_token);
-        window.location.href = "/dashboard"; // ریدایرکت بعد از لاگین
-        this.setState({ sending: false });
-      } catch (error) {
-        this.setState({
-          sending: false,
-          errors: ["نام کاربری یا رمز عبور صحیح نمیباشد"]
-        });
-      }
+    if (!validate()) return;
+    setErrors([]);
+    setStatus("sending");
+
+    try {
+      const res = await axios.post("http://localhost:8005/login/", {
+        username: account.username,
+        password: account.password,
+      });
+
+      // فرض بر این است که پاسخ token دارد
+      const token = res?.data?.tokens?.access_token || res?.data?.token || null;
+      if (token) localStorage.setItem("token", token);
+
+      // success animation
+      setStatus("success");
+
+      // صبر می‌کنیم انیمیشن کامل شود (مطابق CSS ~1200ms)
+      // بعد redirect می‌کنیم — اگر می‌خواهی تغییر بدهی زمان را.
+      setTimeout(() => {
+        navigate("/dashboard");
+      }, 1100);
+    } catch (err) {
+      console.error(err);
+      // نمایش پیغام خطای مناسب
+      setStatus("error");
+      const msg =
+        err?.response?.data?.detail ||
+        err?.response?.data?.message ||
+        "نام کاربری یا رمز عبور صحیح نمی‌باشد";
+      setErrors([msg]);
+
+      // بعد از نمایش خطا انیمیشن را ریست می‌کنیم تا دوباره ارسال بشود
+      setTimeout(() => setStatus("idle"), 1200);
     }
   };
 
-  render() {
-    const { username, password } = this.state.account;
-    return (
-      <div className="login-container">
-        <div className="login-box">
-          <h2>Login</h2>
-
-          {this.state.errors.length !== 0 && (
-            <div className="error">
-              <ul>
-                {this.state.errors.map((e, i) => (
-                  <li key={i}>{e}</li>
-                ))}
-              </ul>
-            </div>
-          )}
-
-          <form onSubmit={this.handelsubmit}>
-            <div className="form-class">
-              <label htmlFor="username">Username</label>
-              <input
-                onChange={this.handelchange}
-                value={username}
-                name="username"
-                id="username"
-                type="text"
-              />
-            </div>
-
-            <div className="form-class">
-              <label htmlFor="password">Password</label>
-              <input
-                onChange={this.handelchange}
-                value={password}
-                name="password"
-                id="password"
-                type="password"
-              />
-            </div>
-
-            <button className="login" disabled={this.state.sending}>
-              Login
-            </button>
-          </form>
-        </div>
+  return (
+    <div className="glow-login-root">
+      <div className="glow-login-toplink">
+        <Link to="/">صفحه اصلی</Link>
       </div>
-    );
-  }
-}
 
-export default Login;
+      <main className="glow-login-panel" role="main" aria-labelledby="loginHeading">
+        <h2 id="loginHeading" className="glow-login-title">وارد شو</h2>
+
+        {errors.length > 0 && (
+          <div className="glow-login-errors" role="alert">
+            <ul>
+              {errors.map((e, i) => (
+                <li key={i}>{e}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        <form className="glow-login-form" onSubmit={handleSubmit} noValidate>
+          <div className={`field ${account.username ? "filled" : ""}`}>
+            <input
+              id="username"
+              name="username"
+              type="text"
+              value={account.username}
+              onChange={handleChange}
+              required
+              autoComplete="username"
+            />
+            <label htmlFor="username">نام کاربری</label>
+          </div>
+
+          <div className={`field ${account.password ? "filled" : ""}`}>
+            <input
+              id="password"
+              name="password"
+              type="password"
+              value={account.password}
+              onChange={handleChange}
+              required
+              autoComplete="current-password"
+            />
+            <label htmlFor="password">رمز عبور</label>
+          </div>
+
+          <button
+            ref={btnRef}
+            className={`auth-btn ${status}`}
+            type="submit"
+            aria-live="polite"
+            disabled={status === "sending" || status === "success"}
+          >
+            <span className="btn-label">ورود</span>
+
+            {/* spinner */}
+            <svg className="btn-spinner" viewBox="0 0 50 50" aria-hidden>
+              <circle cx="25" cy="25" r="20" fill="none" strokeWidth="4" />
+            </svg>
+
+            {/* check mark */}
+            <svg className="btn-check" viewBox="0 0 24 24" aria-hidden>
+              <path d="M20 6L9 17l-5-5" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
+        </form>
+
+        <div className="glow-login-footer">
+          <p>اکانت نداری؟ <Link to="/register">ثبت‌نام کن</Link></p>
+        </div>
+      </main>
+    </div>
+  );
+};
+
+export default LoginForm;

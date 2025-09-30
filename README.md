@@ -1,4 +1,8 @@
-# 💈 پروژه سایت پیرایش مردانه  
+# 💈 پروژه سایت پیرایش مردانه
+
+لینک مشاهده ویدیویی تمام بخش های سایت مورد نظر:
+https://youtu.be/sU6hFDCYL_U?si=SpRmKwsOKfezJCM6
+
 **Frontend:** React  
 **Backend:** Django & Django REST Framework  
 

@@ -51,3 +51,32 @@
    ```bash
    git clone https://github.com/mohammadmahdi345/pirayesh2.git
    cd pirayesh2
+
+
+  2- اجرای پروژه در محیط توسعه با Docker Compose:
+ 
+  docker-compose up -d --build   # اجرای کانتینرها
+
+  docker-compose down            # توقف کانتینرها
+
+  docker-compose exec web pytest # اجرای تست‌ها با Pytest
+
+  locust -f locustfile.py        # اجرای تست عملکردی با Locust
+
+
+
+
+📚 مستندات API
+
+مستندات کامل API از طریق Swagger UI در دسترس است:
+
+🔗 http://localhost:8005/api/docs/
+
+
+📂 ساختار پروژه
+
+Dockerfile → ساخت ایمیج پروژه (Backend & Frontend)
+
+docker-compose.yml → تنظیمات محیط
+   
+
